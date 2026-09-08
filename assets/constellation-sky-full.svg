@@ -1,653 +1,555 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="680">
   <defs>
-    <!-- Background Space Gradients -->
-    <radialGradient id="celestialCoreGlow" cx="50%" cy="50%" r="58%">
-      <stop offset="0%" stop-color="#162c68" stop-opacity="0.95"/>
-      <stop offset="35%" stop-color="#0f1f4c" stop-opacity="0.9"/>
-      <stop offset="65%" stop-color="#091330" stop-opacity="0.95"/>
-      <stop offset="85%" stop-color="#050a1c" stop-opacity="0.98"/>
-      <stop offset="100%" stop-color="#02040c" stop-opacity="1"/>
+    <!-- Deep Celestial Dark Slate Navy Gradients -->
+    <radialGradient id="skyRadial" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#182e44"/>
+      <stop offset="40%" stop-color="#112233"/>
+      <stop offset="75%" stop-color="#0b1723"/>
+      <stop offset="100%" stop-color="#060d14"/>
     </radialGradient>
 
-    <!-- Outer Ring Gradient -->
-    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1e1842"/>
-      <stop offset="50%" stop-color="#0f1636"/>
-      <stop offset="100%" stop-color="#181135"/>
-    </linearGradient>
-
-    <linearGradient id="goldTextGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#fdf3c7"/>
-      <stop offset="50%" stop-color="#fef08a"/>
-      <stop offset="100%" stop-color="#fde047"/>
-    </linearGradient>
-
-    <radialGradient id="starGlowGold" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#fffbeb" stop-opacity="1"/>
-      <stop offset="25%" stop-color="#fde047" stop-opacity="0.9"/>
-      <stop offset="60%" stop-color="#eab308" stop-opacity="0.4"/>
-      <stop offset="100%" stop-color="#ca8a04" stop-opacity="0"/>
+    <!-- Subtle Nebular Dust Clouds -->
+    <radialGradient id="dust1" cx="28%" cy="32%" r="45%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.08"/>
+      <stop offset="60%" stop-color="#1e293b" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="dust2" cx="72%" cy="55%" r="45%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.06"/>
+      <stop offset="60%" stop-color="#0f172a" stop-opacity="0"/>
     </radialGradient>
 
-    <radialGradient id="majorStarGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
-      <stop offset="30%" stop-color="#fef08a" stop-opacity="0.95"/>
-      <stop offset="65%" stop-color="#f59e0b" stop-opacity="0.45"/>
-      <stop offset="100%" stop-color="#d97706" stop-opacity="0"/>
-    </radialGradient>
-
-    <!-- Star Glow Filters -->
-    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+    <!-- Glowing Star Filters -->
+    <filter id="alphaGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.2" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-
-    <filter id="intenseGlow" x="-100%" y="-100%" width="300%" height="300%">
+    <filter id="brightHalo" x="-100%" y="-100%" width="300%" height="300%">
       <feGaussianBlur in="SourceGraphic" stdDeviation="4.5" result="b1"/>
-      <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="b2"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="b2"/>
       <feMerge>
         <feMergeNode in="b1"/>
         <feMergeNode in="b2"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+
+    <!-- Title Gradient -->
+    <linearGradient id="titleGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fef9c3"/>
+      <stop offset="50%" stop-color="#fef08a"/>
+      <stop offset="100%" stop-color="#fde047"/>
+    </linearGradient>
+
+    <!-- Reusable 4-Point Star Flare Template -->
+    <g id="star4pt">
+      <path d="M 0 -7 L 1.2 -1.2 L 7 0 L 1.2 1.2 L 0 7 L -1.2 1.2 L -7 0 L -1.2 -1.2 Z" fill="#ffffff"/>
+      <circle cx="0" cy="0" r="1.8" fill="#fef08a"/>
+    </g>
+    <g id="star4pt-lg">
+      <path d="M 0 -11 L 1.8 -1.8 L 11 0 L 1.8 1.8 L 0 11 L -1.8 1.8 L -11 0 L -1.8 -1.8 Z" fill="#ffffff" filter="url(#alphaGlow)"/>
+      <circle cx="0" cy="0" r="2.5" fill="#fde047"/>
+    </g>
+    <!-- Cluster Symbol (like NGC/Open Clusters in the inspo map) -->
+    <g id="clusterSymbol">
+      <circle cx="0" cy="0" r="4.5" stroke="#fef08a" stroke-width="0.8" stroke-dasharray="2 2" fill="none" opacity="0.75"/>
+      <circle cx="0" cy="0" r="1.5" fill="#fef08a" opacity="0.9"/>
+    </g>
   </defs>
 
   <style>
-    .star-line {
-      stroke: #eed27b;
-      stroke-width: 1.4;
+    .c-line {
+      stroke: #ecdcb9;
+      stroke-width: 1.15;
       stroke-linecap: round;
       stroke-linejoin: round;
-      stroke-opacity: 0.85;
+      stroke-opacity: 0.82;
       fill: none;
     }
-    .secondary-line {
-      stroke: #e2b960;
-      stroke-width: 1.1;
+    .c-dash {
+      stroke: #d8c7a2;
+      stroke-width: 0.95;
       stroke-dasharray: 3 3;
-      stroke-opacity: 0.65;
+      stroke-opacity: 0.6;
       fill: none;
     }
-    .grid-circle {
-      stroke: #4162a8;
-      stroke-width: 0.8;
-      stroke-opacity: 0.4;
-      fill: none;
-    }
-    .grid-circle-dashed {
-      stroke: #5880d6;
-      stroke-width: 0.9;
-      stroke-dasharray: 4 6;
-      stroke-opacity: 0.45;
-      fill: none;
-    }
-    .grid-spoke {
-      stroke: #4162a8;
-      stroke-width: 0.7;
-      stroke-dasharray: 3 6;
-      stroke-opacity: 0.35;
-    }
-    .const-label {
-      font-family: 'Times New Roman', 'Georgia', 'Baskerville', serif;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      fill: #ffffff;
-      text-shadow: 0 0 6px rgba(0,0,0,0.9), 0 0 10px rgba(13,27,64,0.9);
-    }
-    .const-label-sub {
-      font-family: 'Times New Roman', 'Georgia', 'Baskerville', serif;
-      font-size: 10px;
-      letter-spacing: 1.2px;
-      fill: #cbd5e1;
-      opacity: 0.85;
-    }
-    .astronomy-title {
-      font-family: 'Times New Roman', 'Georgia', 'Cinzel', serif;
-      font-size: 34px;
+    .main-headline {
+      font-family: 'Cinzel', 'Times New Roman', 'Georgia', -apple-system, serif;
+      font-size: 32px;
       font-weight: 700;
       letter-spacing: 4px;
-      fill: url(#goldTextGrad);
-      text-shadow: 0 0 16px rgba(234, 179, 8, 0.4), 0 2px 4px rgba(0,0,0,0.9);
-    }
-    .ring-label {
-      font-family: 'Times New Roman', 'Georgia', serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      fill: #e2e8f0;
-      opacity: 0.8;
+      fill: url(#titleGold);
+      text-shadow: 0 0 14px rgba(253, 224, 71, 0.4), 0 2px 4px rgba(0,0,0,0.9);
     }
   </style>
 
-  <!-- Deep Canvas Base -->
-  <rect width="100%" height="100%" fill="#030611" rx="16"/>
-  
-  <!-- Planisphere Deep Blue Radial Glow -->
-  <rect width="100%" height="100%" fill="url(#celestialCoreGlow)" rx="16"/>
+  <!-- Background Base & Atmospheric Gradients -->
+  <rect width="100%" height="100%" fill="#081018" rx="16"/>
+  <rect width="100%" height="100%" fill="url(#skyRadial)" rx="16"/>
+  <rect width="100%" height="100%" fill="url(#dust1)" rx="16"/>
+  <rect width="100%" height="100%" fill="url(#dust2)" rx="16"/>
 
-  <!-- Celestial Grid: Concentric Declination Circles centered at (600, 340) -->
+  <!-- ================= DENSE BACKGROUND ASTRONOMICAL STARFIELD ================= -->
+  <g fill="#fef08a" opacity="0.6">
+    <!-- Golden micro-stars scattered realistic distribution -->
+    <circle cx="45" cy="65" r="0.8"/><circle cx="95" cy="40" r="0.6"/><circle cx="140" cy="85" r="0.9"/>
+    <circle cx="190" cy="30" r="0.7"/><circle cx="230" cy="95" r="0.8"/><circle cx="280" cy="45" r="1.0"/>
+    <circle cx="320" cy="80" r="0.6"/><circle cx="370" cy="25" r="0.9"/><circle cx="410" cy="70" r="0.7"/>
+    <circle cx="460" cy="35" r="0.8"/><circle cx="510" cy="80" r="1.0"/><circle cx="555" cy="40" r="0.7"/>
+    <circle cx="645" cy="45" r="0.8"/><circle cx="690" cy="85" r="0.9"/><circle cx="740" cy="30" r="0.7"/>
+    <circle cx="780" cy="75" r="0.8"/><circle cx="830" cy="35" r="1.1"/><circle cx="880" cy="80" r="0.6"/>
+    <circle cx="925" cy="40" r="0.8"/><circle cx="970" cy="90" r="0.9"/><circle cx="1020" cy="30" r="0.7"/>
+    <circle cx="1065" cy="75" r="0.8"/><circle cx="1110" cy="45" r="1.0"/><circle cx="1155" cy="90" r="0.6"/>
+
+    <circle cx="35" cy="180" r="0.7"/><circle cx="85" cy="220" r="1.1"/><circle cx="130" cy="160" r="0.6"/>
+    <circle cx="175" cy="235" r="0.9"/><circle cx="220" cy="170" r="0.7"/><circle cx="265" cy="245" r="0.8"/>
+    <circle cx="310" cy="190" r="1.0"/><circle cx="355" cy="250" r="0.6"/><circle cx="400" cy="180" r="0.8"/>
+    <circle cx="445" cy="230" r="0.7"/><circle cx="490" cy="165" r="0.9"/><circle cx="535" cy="225" r="0.8"/>
+    <circle cx="665" cy="170" r="0.8"/><circle cx="710" cy="235" r="0.9"/><circle cx="755" cy="160" r="0.7"/>
+    <circle cx="800" cy="220" r="1.0"/><circle cx="845" cy="175" r="0.6"/><circle cx="890" cy="240" r="0.8"/>
+    <circle cx="935" cy="185" r="0.9"/><circle cx="980" cy="225" r="0.7"/><circle cx="1025" cy="165" r="0.8"/>
+    <circle cx="1070" cy="230" r="1.0"/><circle cx="1125" cy="170" r="0.6"/><circle cx="1165" cy="220" r="0.8"/>
+
+    <circle cx="40" cy="340" r="0.8"/><circle cx="90" cy="390" r="0.6"/><circle cx="135" cy="330" r="0.9"/>
+    <circle cx="180" cy="405" r="0.7"/><circle cx="225" cy="350" r="1.0"/><circle cx="270" cy="415" r="0.8"/>
+    <circle cx="315" cy="360" r="0.6"/><circle cx="360" cy="420" r="0.9"/><circle cx="405" cy="345" r="0.7"/>
+    <circle cx="450" cy="410" r="0.8"/><circle cx="495" cy="335" r="1.0"/><circle cx="540" cy="395" r="0.7"/>
+    <circle cx="660" cy="350" r="0.8"/><circle cx="705" cy="405" r="0.9"/><circle cx="750" cy="330" r="0.7"/>
+    <circle cx="795" cy="390" r="1.1"/><circle cx="840" cy="345" r="0.6"/><circle cx="885" cy="410" r="0.8"/>
+    <circle cx="930" cy="355" r="0.9"/><circle cx="975" cy="395" r="0.7"/><circle cx="1020" cy="335" r="0.8"/>
+    <circle cx="1065" cy="400" r="1.0"/><circle cx="1120" cy="340" r="0.6"/><circle cx="1160" cy="390" r="0.8"/>
+
+    <circle cx="50" cy="510" r="0.7"/><circle cx="95" cy="565" r="1.0"/><circle cx="140" cy="495" r="0.6"/>
+    <circle cx="185" cy="580" r="0.8"/><circle cx="230" cy="520" r="0.7"/><circle cx="275" cy="590" r="0.9"/>
+    <circle cx="320" cy="535" r="0.8"/><circle cx="365" cy="600" r="0.6"/><circle cx="410" cy="515" r="1.0"/>
+    <circle cx="455" cy="575" r="0.7"/><circle cx="500" cy="505" r="0.8"/><circle cx="545" cy="570" r="0.9"/>
+    <circle cx="655" cy="520" r="0.7"/><circle cx="700" cy="585" r="0.8"/><circle cx="745" cy="510" r="1.0"/>
+    <circle cx="790" cy="565" r="0.6"/><circle cx="835" cy="525" r="0.9"/><circle cx="880" cy="590" r="0.7"/>
+    <circle cx="925" cy="530" r="0.8"/><circle cx="970" cy="575" r="1.0"/><circle cx="1015" cy="515" r="0.6"/>
+    <circle cx="1060" cy="580" r="0.8"/><circle cx="1115" cy="520" r="0.9"/><circle cx="1155" cy="570" r="0.7"/>
+
+    <circle cx="60" cy="640" r="0.8"/><circle cx="150" cy="635" r="0.9"/><circle cx="240" cy="645" r="0.7"/>
+    <circle cx="330" cy="640" r="1.0"/><circle cx="420" cy="630" r="0.8"/><circle cx="510" cy="645" r="0.7"/>
+    <circle cx="690" cy="635" r="0.9"/><circle cx="780" cy="640" r="0.8"/><circle cx="870" cy="630" r="1.0"/>
+    <circle cx="960" cy="645" r="0.7"/><circle cx="1050" cy="635" r="0.8"/><circle cx="1140" cy="640" r="0.9"/>
+  </g>
+
+  <!-- Fine Pale-Blue Micro Star Speckles -->
+  <g fill="#bae6fd" opacity="0.45">
+    <circle cx="75" cy="110" r="0.5"/><circle cx="165" cy="120" r="0.5"/><circle cx="255" cy="105" r="0.5"/>
+    <circle cx="345" cy="130" r="0.5"/><circle cx="435" cy="115" r="0.5"/><circle cx="525" cy="125" r="0.5"/>
+    <circle cx="675" cy="110" r="0.5"/><circle cx="765" cy="135" r="0.5"/><circle cx="855" cy="115" r="0.5"/>
+    <circle cx="945" cy="130" r="0.5"/><circle cx="1035" cy="110" r="0.5"/><circle cx="1125" cy="125" r="0.5"/>
+    <circle cx="70" cy="270" r="0.5"/><circle cx="160" cy="285" r="0.5"/><circle cx="250" cy="265" r="0.5"/>
+    <circle cx="340" cy="290" r="0.5"/><circle cx="430" cy="275" r="0.5"/><circle cx="520" cy="285" r="0.5"/>
+    <circle cx="680" cy="270" r="0.5"/><circle cx="770" cy="295" r="0.5"/><circle cx="860" cy="275" r="0.5"/>
+    <circle cx="950" cy="290" r="0.5"/><circle cx="1040" cy="270" r="0.5"/><circle cx="1130" cy="285" r="0.5"/>
+    <circle cx="65" cy="450" r="0.5"/><circle cx="155" cy="460" r="0.5"/><circle cx="245" cy="445" r="0.5"/>
+    <circle cx="335" cy="470" r="0.5"/><circle cx="425" cy="455" r="0.5"/><circle cx="515" cy="465" r="0.5"/>
+    <circle cx="685" cy="450" r="0.5"/><circle cx="775" cy="475" r="0.5"/><circle cx="865" cy="455" r="0.5"/>
+    <circle cx="955" cy="470" r="0.5"/><circle cx="1045" cy="450" r="0.5"/><circle cx="1135" cy="465" r="0.5"/>
+  </g>
+
+  <!-- Deep Sky Objects / Clusters (like NGC symbols & Andromeda spiral in the inspo map) -->
   <g>
-    <circle cx="600" cy="340" r="50" class="grid-circle"/>
-    <circle cx="600" cy="340" r="110" class="grid-circle-dashed"/>
-    <circle cx="600" cy="340" r="175" class="grid-circle"/>
-    <circle cx="600" cy="340" r="240" class="grid-circle-dashed"/>
-    <circle cx="600" cy="340" r="300" class="grid-circle"/>
-    <circle cx="600" cy="340" r="325" stroke="#94a3b8" stroke-width="1.2" stroke-opacity="0.5" fill="none"/>
-    
-    <!-- Celestial Equator Arc/Ring -->
-    <circle cx="600" cy="340" r="275" stroke="#fef08a" stroke-width="1.2" stroke-dasharray="6 4" stroke-opacity="0.35" fill="none"/>
-    <path id="celestialEquatorTextPath" d="M 345 340 A 255 255 0 0 1 855 340" fill="none"/>
-    <text font-family="'Times New Roman', Georgia, serif" font-size="9" fill="#fef08a" opacity="0.5" letter-spacing="4">
-      <textPath href="#celestialEquatorTextPath" startOffset="50%" text-anchor="middle">
-        — CELESTIAL EQUATOR —
-      </textPath>
-    </text>
-
-    <!-- Radial Hour Angle Spokes -->
-    <line x1="600" y1="20" x2="600" y2="660" class="grid-spoke"/>
-    <line x1="280" y1="340" x2="920" y2="340" class="grid-spoke"/>
-    <line x1="373" y1="113" x2="827" y2="567" class="grid-spoke"/>
-    <line x1="827" y1="113" x2="373" y2="567" class="grid-spoke"/>
-    <line x1="482" y1="42" x2="718" y2="638" class="grid-spoke"/>
-    <line x1="718" y1="42" x2="482" y2="638" class="grid-spoke"/>
-    <line x1="302" y1="222" x2="898" y2="458" class="grid-spoke"/>
-    <line x1="302" y1="458" x2="898" y2="222" class="grid-spoke"/>
-  </g>
-
-  <!-- Astrolabe Map Coordinate Dial / Month Ring Border -->
-  <g>
-    <!-- Outer Rim Ring -->
-    <circle cx="600" cy="340" r="332" stroke="#6366f1" stroke-width="1" stroke-opacity="0.3" fill="none"/>
-    
-    <!-- Coordinate Ticks around the perimeter -->
-    <g stroke="#93c5fd" stroke-width="1" opacity="0.4">
-      <!-- 24 Hour coordinate tick marks -->
-      <line x1="600" y1="15" x2="600" y2="25"/>
-      <line x1="600" y1="655" x2="600" y2="665"/>
-      <line x1="275" y1="340" x2="285" y2="340"/>
-      <line x1="915" y1="340" x2="925" y2="340"/>
-      <line x1="370" y1="110" x2="377" y2="117"/>
-      <line x1="823" y1="563" x2="830" y2="570"/>
-      <line x1="823" y1="117" x2="830" y2="110"/>
-      <line x1="370" y1="570" x2="377" y2="563"/>
+    <!-- Pleiades (Seven Sisters) open cluster -->
+    <g transform="translate(255, 175)">
+      <circle cx="0" cy="0" r="6" stroke="#bae6fd" stroke-width="0.6" stroke-dasharray="2 2" fill="none" opacity="0.8"/>
+      <circle cx="-2" cy="-2" r="1.5" fill="#ffffff" filter="url(#alphaGlow)"/>
+      <circle cx="2" cy="-1" r="1.3" fill="#ffffff"/>
+      <circle cx="0" cy="2" r="1.4" fill="#ffffff"/>
+      <circle cx="-3" cy="2" r="1.1" fill="#ffffff"/>
+      <circle cx="3" cy="2.5" r="1.2" fill="#ffffff"/>
+      <circle cx="-1" cy="-4" r="1.0" fill="#ffffff"/>
+      <circle cx="4" cy="-3" r="0.9" fill="#ffffff"/>
     </g>
-
-    <!-- Side Map Legend / Coordinate Crosshairs (+) scattered across chart -->
-    <g stroke="#93c5fd" stroke-width="0.8" opacity="0.35">
-      <path d="M 520 220 L 520 226 M 517 223 L 523 223"/>
-      <path d="M 680 210 L 680 216 M 677 213 L 683 213"/>
-      <path d="M 460 360 L 460 366 M 457 363 L 463 363"/>
-      <path d="M 740 370 L 740 376 M 737 373 L 743 373"/>
-      <path d="M 550 460 L 550 466 M 547 463 L 553 463"/>
-      <path d="M 660 470 L 660 476 M 657 473 L 663 473"/>
-      <path d="M 360 260 L 360 266 M 357 263 L 363 263"/>
-      <path d="M 840 250 L 840 256 M 837 253 L 843 253"/>
-      <path d="M 380 430 L 380 436 M 377 433 L 383 433"/>
-      <path d="M 820 440 L 820 446 M 817 443 L 823 443"/>
-      <path d="M 210 180 L 210 186 M 207 183 L 213 183"/>
-      <path d="M 990 190 L 990 196 M 987 193 L 993 193"/>
-      <path d="M 180 500 L 180 506 M 177 503 L 183 503"/>
-      <path d="M 1020 490 L 1020 496 M 1017 493 L 1023 493"/>
+    <!-- Andromeda Galaxy (M31) subtle glowing oval -->
+    <g transform="translate(390, 210) rotate(-35)">
+      <ellipse cx="0" cy="0" rx="14" ry="5" fill="#67e8f9" fill-opacity="0.22" filter="url(#brightHalo)"/>
+      <ellipse cx="0" cy="0" rx="9" ry="3" fill="#ffffff" fill-opacity="0.6"/>
+      <circle cx="0" cy="0" r="1.8" fill="#ffffff"/>
     </g>
+    <!-- Beehive / Open Clusters -->
+    <use href="#clusterSymbol" x="840" y="470"/>
+    <use href="#clusterSymbol" x="720" y="325"/>
+    <use href="#clusterSymbol" x="520" y="195"/>
+    <use href="#clusterSymbol" x="430" y="460"/>
+    <use href="#clusterSymbol" x="970" y="215"/>
   </g>
 
-  <!-- Ambient Dense Background Starfield -->
-  <g fill="#ffffff">
-    <circle cx="95" cy="80" r="0.7" opacity="0.4"/>
-    <circle cx="150" cy="140" r="1.1" opacity="0.6"/>
-    <circle cx="220" cy="70" r="0.8" opacity="0.4"/>
-    <circle cx="270" cy="130" r="1.2" opacity="0.5"/>
-    <circle cx="330" cy="65" r="0.9" opacity="0.4"/>
-    <circle cx="410" cy="100" r="0.8" opacity="0.4"/>
-    <circle cx="490" cy="60" r="1.2" opacity="0.5"/>
-    <circle cx="560" cy="90" r="0.7" opacity="0.4"/>
-    <circle cx="640" cy="75" r="1.1" opacity="0.5"/>
-    <circle cx="720" cy="50" r="0.8" opacity="0.4"/>
-    <circle cx="790" cy="95" r="1" opacity="0.5"/>
-    <circle cx="870" cy="60" r="0.9" opacity="0.4"/>
-    <circle cx="940" cy="120" r="1.3" opacity="0.6"/>
-    <circle cx="1020" cy="70" r="0.8" opacity="0.4"/>
-    <circle cx="1090" cy="130" r="1" opacity="0.5"/>
-    <circle cx="1140" cy="85" r="0.7" opacity="0.4"/>
+  <!-- ================= CONSTELLATION LINEWORK & STARS (NO NAMES, NO CIRCLE GRIDS, NO NUMBERS) ================= -->
 
-    <circle cx="80" cy="280" r="0.8" opacity="0.4"/>
-    <circle cx="1120" cy="270" r="1.1" opacity="0.5"/>
-    <circle cx="70" cy="420" r="1" opacity="0.4"/>
-    <circle cx="1130" cy="430" r="0.8" opacity="0.4"/>
-    <circle cx="90" cy="590" r="1.2" opacity="0.5"/>
-    <circle cx="1110" cy="580" r="0.9" opacity="0.4"/>
-
-    <circle cx="450" cy="180" r="0.7" opacity="0.4"/>
-    <circle cx="750" cy="180" r="0.9" opacity="0.5"/>
-    <circle cx="530" cy="270" r="0.8" opacity="0.4"/>
-    <circle cx="670" cy="270" r="0.8" opacity="0.4"/>
-    <circle cx="480" cy="410" r="1" opacity="0.4"/>
-    <circle cx="720" cy="410" r="0.7" opacity="0.4"/>
-    <circle cx="550" cy="520" r="0.9" opacity="0.5"/>
-    <circle cx="650" cy="520" r="1.1" opacity="0.5"/>
-  </g>
-
-  <!-- ================= CONSTELLATION FIGURES & LINES ================= -->
-
-  <!-- 1. URSA MINOR (North Celestial Pole & Polaris) - Center Upper -->
+  <!-- 1. URSA MINOR & POLARIS (Center Upper) -->
   <g id="UrsaMinor">
-    <!-- Lines -->
-    <polyline points="600,285 592,260 575,250 560,262 570,278 592,260" class="star-line"/>
-    <line x1="600" y1="285" x2="600" y2="310" class="star-line"/>
-    <line x1="600" y1="310" x2="600" y2="336" class="star-line"/>
+    <polyline points="600,285 590,260 572,248 556,260 568,278 590,260" class="c-line"/>
+    <line x1="600" y1="285" x2="600" y2="310" class="c-line"/>
+    <line x1="600" y1="310" x2="600" y2="340" class="c-line"/>
     
-    <!-- Stars -->
-    <circle cx="600" cy="336" r="3.8" fill="#ffffff" filter="url(#intenseGlow)"/> <!-- Polaris -->
-    <circle cx="600" cy="310" r="2.2" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="600" cy="285" r="2.2" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="592" cy="260" r="2.5" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="575" cy="250" r="2.8" fill="#ffd866" filter="url(#glow)"/> <!-- Kochab -->
-    <circle cx="560" cy="262" r="2.5" fill="#ffd866" filter="url(#glow)"/> <!-- Pherkad -->
-    <circle cx="570" cy="278" r="2.2" fill="#ffd866" filter="url(#glow)"/>
-    
-    <text x="612" y="275" class="const-label">Ursa</text>
-    <text x="612" y="288" class="const-label">Minor</text>
+    <use href="#star4pt-lg" x="600" y="340"/> <!-- POLARIS -->
+    <circle cx="600" cy="310" r="2.2" fill="#fef08a"/>
+    <circle cx="600" cy="285" r="2.2" fill="#fef08a"/>
+    <circle cx="590" cy="260" r="2.4" fill="#fef08a"/>
+    <circle cx="572" cy="248" r="3.0" fill="#fde047" filter="url(#alphaGlow)"/> <!-- Kochab -->
+    <circle cx="556" cy="260" r="2.6" fill="#fef08a"/> <!-- Pherkad -->
+    <circle cx="568" cy="278" r="2.2" fill="#fef08a"/>
   </g>
 
-  <!-- 2. CASSIOPEIA - Top Central/Left -->
+  <!-- 2. CASSIOPEIA (Top Center-Left) -->
   <g id="Cassiopeia">
-    <!-- Classic W shape -->
-    <polyline points="475,230 500,215 518,235 538,212 558,225" class="star-line"/>
+    <polyline points="475,230 500,215 520,235 540,210 560,225" class="c-line"/>
+    <line x1="500" y1="215" x2="475" y2="185" class="c-dash"/>
     
-    <!-- Stars -->
-    <circle cx="475" cy="230" r="2.6" fill="#ffd866" filter="url(#glow)"/> <!-- Caph -->
-    <circle cx="500" cy="215" r="3.2" fill="#ffffff" filter="url(#intenseGlow)"/> <!-- Schedar -->
-    <circle cx="518" cy="235" r="3.0" fill="#ffd866" filter="url(#glow)"/> <!-- Gamma Cas -->
-    <circle cx="538" cy="212" r="2.6" fill="#ffd866" filter="url(#glow)"/> <!-- Ruchbah -->
-    <circle cx="558" cy="225" r="2.4" fill="#ffd866" filter="url(#glow)"/> <!-- Segin -->
-
-    <text x="495" y="198" class="const-label" text-anchor="middle">Cassiopeia</text>
+    <circle cx="475" cy="230" r="2.8" fill="#fef08a"/> <!-- Caph -->
+    <use href="#star4pt" x="500" y="215"/> <!-- Schedar -->
+    <use href="#star4pt" x="520" y="235"/> <!-- Gamma Cas -->
+    <circle cx="540" cy="210" r="2.8" fill="#fef08a"/> <!-- Ruchbah -->
+    <circle cx="560" cy="225" r="2.4" fill="#fef08a"/> <!-- Segin -->
   </g>
 
-  <!-- 3. URSA MAJOR (Big Dipper & Great Bear) - Center Right -->
+  <!-- 3. CEPHEUS (Crown above Cassiopeia) -->
+  <g id="Cepheus">
+    <polygon points="460,285 435,260 410,285 425,325 455,320" class="c-line"/>
+    <line x1="435" y1="260" x2="425" y2="325" class="c-dash"/>
+    
+    <circle cx="460" cy="285" r="3.0" fill="#fde047"/> <!-- Alderamin -->
+    <circle cx="435" cy="260" r="2.5" fill="#fef08a"/> <!-- Alfirk -->
+    <circle cx="410" cy="285" r="2.6" fill="#fef08a"/> <!-- Errai -->
+    <circle cx="425" cy="325" r="2.2" fill="#fef08a"/>
+    <circle cx="455" cy="320" r="2.2" fill="#fef08a"/>
+  </g>
+
+  <!-- 4. DRACO (Serpentine curve wrapping Ursa Minor) -->
+  <g id="Draco">
+    <polyline points="630,225 615,200 580,185 540,175 495,178 465,195 440,210" class="c-line"/>
+    <polyline points="630,225 655,215 675,190 665,165 640,155 632,168 640,155" class="c-line"/>
+    <polygon points="665,165 682,152 690,165 675,175" class="c-line"/>
+
+    <circle cx="630" cy="225" r="2.4" fill="#fef08a"/> <!-- Thuban -->
+    <circle cx="615" cy="200" r="2.2" fill="#fef08a"/>
+    <circle cx="580" cy="185" r="2.2" fill="#fef08a"/>
+    <circle cx="540" cy="175" r="2.5" fill="#fef08a"/>
+    <use href="#star4pt" x="665" y="165"/> <!-- Eltanin -->
+    <circle cx="682" cy="152" r="2.8" fill="#fef08a"/> <!-- Rastaban -->
+    <circle cx="690" cy="165" r="2.2" fill="#fef08a"/>
+    <circle cx="675" cy="175" r="2.2" fill="#fef08a"/>
+  </g>
+
+  <!-- 5. CYGNUS & LYRA (Upper Left) -->
+  <g id="CygnusLyra">
+    <!-- Cygnus Cross -->
+    <line x1="430" y1="380" x2="350" y2="445" class="c-line"/> <!-- Deneb to Albireo -->
+    <line x1="380" y1="390" x2="420" y2="440" class="c-line"/> <!-- Wings -->
+    <line x1="420" y1="440" x2="440" y2="470" class="c-dash"/>
+    <line x1="380" y1="390" x2="360" y2="365" class="c-dash"/>
+
+    <use href="#star4pt-lg" x="430" y="380"/> <!-- DENEB -->
+    <circle cx="395" cy="410" r="3.0" fill="#fde047"/> <!-- Sadr -->
+    <circle cx="350" cy="445" r="2.8" fill="#fef08a"/> <!-- Albireo -->
+    <circle cx="380" cy="390" r="2.6" fill="#fef08a"/> <!-- Gienah -->
+    <circle cx="420" cy="440" r="2.6" fill="#fef08a"/>
+    <circle cx="440" cy="470" r="2.0" fill="#fef08a"/>
+    <circle cx="360" cy="365" r="2.0" fill="#fef08a"/>
+
+    <!-- Lyra -->
+    <polygon points="505,405 525,415 515,445 495,435" class="c-line"/>
+    <line x1="510" y1="375" x2="505" y2="405" class="c-line"/>
+    <line x1="510" y1="375" x2="525" y2="415" class="c-dash"/>
+
+    <use href="#star4pt-lg" x="510" y="375"/> <!-- VEGA (Bright Alpha) -->
+    <circle cx="505" cy="405" r="2.5" fill="#fef08a"/>
+    <circle cx="525" cy="415" r="2.4" fill="#fef08a"/>
+    <circle cx="515" cy="445" r="2.8" fill="#fde047"/> <!-- Sheliak -->
+    <circle cx="495" cy="435" r="2.8" fill="#fde047"/> <!-- Sulafat -->
+  </g>
+
+  <!-- 6. PEGASUS, ANDROMEDA & PERSEUS (Top / Mid Left) -->
+  <g id="PegasusAndromedaPerseus">
+    <!-- Great Square -->
+    <polygon points="275,325 330,325 345,395 280,385" class="c-line"/>
+    <polyline points="345,395 385,420 405,410" class="c-line"/>
+    <polyline points="280,385 245,410 220,405" class="c-line"/>
+
+    <!-- Andromeda arc -->
+    <polyline points="330,325 365,275 400,240 435,220" class="c-line"/>
+    <line x1="365" y1="275" x2="350" y2="250" class="c-dash"/>
+    <line x1="400" y1="240" x2="390" y2="215" class="c-dash"/>
+
+    <!-- Perseus -->
+    <polyline points="435,220 470,180 505,155 530,170" class="c-line"/>
+    <polyline points="470,180 495,195 510,215" class="c-line"/>
+
+    <!-- Stars -->
+    <use href="#star4pt" x="330" y="325"/> <!-- Alpheratz -->
+    <circle cx="275" cy="325" r="3.0" fill="#fef08a"/> <!-- Scheat -->
+    <circle cx="280" cy="385" r="3.2" fill="#fef08a"/> <!-- Markab -->
+    <circle cx="345" cy="395" r="3.0" fill="#fef08a"/> <!-- Algenib -->
+    <circle cx="385" cy="420" r="2.5" fill="#fef08a"/> <!-- Enif -->
+    <circle cx="405" cy="410" r="2.2" fill="#fef08a"/>
+    <circle cx="245" cy="410" r="2.4" fill="#fef08a"/>
+    <circle cx="220" cy="405" r="2.0" fill="#fef08a"/>
+
+    <circle cx="365" cy="275" r="3.2" fill="#fde047"/> <!-- Mirach -->
+    <use href="#star4pt" x="400" y="240"/> <!-- Almach -->
+    <circle cx="435" cy="220" r="2.2" fill="#fef08a"/>
+    <use href="#star4pt" x="470" y="180"/> <!-- Mirfak -->
+    <circle cx="495" cy="195" r="3.0" fill="#fef08a"/> <!-- Algol (Demon Star) -->
+    <circle cx="505" cy="155" r="2.4" fill="#fef08a"/>
+    <circle cx="530" cy="170" r="2.2" fill="#fef08a"/>
+    <circle cx="510" cy="215" r="2.2" fill="#fef08a"/>
+  </g>
+
+  <!-- 7. PISCES & AQUARIUS (Far Left) -->
+  <g id="PiscesAquarius">
+    <!-- Pisces V-ribbon -->
+    <polyline points="190,310 220,345 245,370 230,410 195,430 175,410 190,370 230,410" class="c-line"/>
+    <polyline points="190,310 170,290 160,255" class="c-dash"/>
+
+    <!-- Aquarius urn and stream -->
+    <polyline points="170,480 195,470 210,490 195,510 170,480" class="c-line"/>
+    <polyline points="195,470 225,465 250,480" class="c-line"/>
+    <path d="M 210 490 Q 230 530 215 560 T 240 610" class="c-dash"/>
+    <path d="M 195 510 Q 205 545 185 580 T 205 625" class="c-dash"/>
+
+    <circle cx="190" cy="310" r="2.8" fill="#fef08a"/> <!-- Alrescha -->
+    <circle cx="220" cy="345" r="2.2" fill="#fef08a"/>
+    <circle cx="245" cy="370" r="2.4" fill="#fef08a"/>
+    <circle cx="230" cy="410" r="2.6" fill="#fef08a"/>
+    <circle cx="170" cy="480" r="3.0" fill="#fde047"/> <!-- Sadalmelik -->
+    <use href="#star4pt" x="195" y="470"/> <!-- Sadalsuud -->
+    <circle cx="210" cy="490" r="2.4" fill="#fef08a"/>
+    <circle cx="250" cy="480" r="2.5" fill="#fef08a"/> <!-- Skat -->
+    <circle cx="240" cy="610" r="2.2" fill="#fef08a"/>
+  </g>
+
+  <!-- 8. TAURUS & AURIGA (Top Mid-Left) -->
+  <g id="TaurusAuriga">
+    <!-- Auriga Pentagon -->
+    <polygon points="340,110 395,95 435,130 405,175 355,160" class="c-line"/>
+    <line x1="395" y1="95" x2="355" y2="160" class="c-dash"/>
+
+    <!-- Taurus Horns & V-face -->
+    <polyline points="355,160 315,190 285,205 250,195" class="c-line"/>
+    <polyline points="315,190 310,225 335,235 360,215 355,160" class="c-line"/>
+
+    <use href="#star4pt-lg" x="395" y="95"/> <!-- CAPELLA (Golden Alpha) -->
+    <circle cx="340" cy="110" r="3.2" fill="#fef08a"/> <!-- Menkalinan -->
+    <circle cx="435" cy="130" r="2.6" fill="#fef08a"/>
+    <circle cx="405" cy="175" r="2.8" fill="#fef08a"/>
+    <circle cx="355" cy="160" r="3.2" fill="#fde047"/> <!-- Elnath -->
+
+    <use href="#star4pt-lg" x="335" y="235"/> <!-- ALDEBARAN (Orange Giant) -->
+    <circle cx="315" cy="190" r="2.5" fill="#fef08a"/>
+    <circle cx="285" cy="205" r="2.2" fill="#fef08a"/>
+    <circle cx="310" cy="225" r="2.4" fill="#fef08a"/>
+    <circle cx="360" cy="215" r="2.4" fill="#fef08a"/>
+  </g>
+
+  <!-- 9. ORION (Mid Left / Top-Mid Left) -->
+  <g id="Orion">
+    <!-- Hourglass shape -->
+    <line x1="330" y1="20" x2="280" y2="15" class="c-line"/> <!-- Shoulders -->
+    <polyline points="320,-15 305,-18 290,-21" class="c-line"/> <!-- Belt -->
+    <line x1="330" y1="20" x2="320" y2="-15" class="c-line"/>
+    <line x1="280" y1="15" x2="290" y2="-21" class="c-line"/>
+    <line x1="290" y1="-21" x2="270" y2="-50" class="c-line"/> <!-- To Rigel -->
+    <line x1="320" y1="-15" x2="325" y2="-45" class="c-line"/> <!-- To Saiph -->
+    <!-- Shield / Bow arc -->
+    <path d="M 255 -5 Q 245 15 255 35" class="c-dash"/>
+
+    <!-- Transformation to fit nicely inside canvas at (290, 80) -->
+    <g transform="translate(0, 75)">
+      <!-- Shoulders -->
+      <line x1="340" y1="45" x2="290" y2="40" class="c-line"/>
+      <!-- Belt -->
+      <line x1="330" y1="10" x2="298" y2="4" class="c-line"/>
+      <!-- Body links -->
+      <line x1="340" y1="45" x2="330" y2="10" class="c-line"/>
+      <line x1="290" y1="40" x2="298" y2="4" class="c-line"/>
+      <!-- Legs -->
+      <line x1="298" y1="4" x2="280" y2="-25" class="c-line"/>
+      <line x1="330" y1="10" x2="335" y2="-20" class="c-line"/>
+
+      <use href="#star4pt-lg" x="340" y="45"/> <!-- BETELGEUSE (Red Giant) -->
+      <use href="#star4pt" x="290" y="40"/> <!-- Bellatrix -->
+      <circle cx="330" cy="10" r="2.8" fill="#ffffff"/> <!-- Alnitak -->
+      <circle cx="314" cy="7" r="2.6" fill="#ffffff"/> <!-- Alnilam -->
+      <circle cx="298" cy="4" r="2.8" fill="#ffffff"/> <!-- Mintaka -->
+      <use href="#star4pt-lg" x="280" y="-25"/> <!-- RIGEL -->
+      <circle cx="335" cy="-20" r="3.0" fill="#fef08a"/> <!-- Saiph -->
+    </g>
+  </g>
+
+  <!-- 10. URSA MAJOR (Big Dipper & Legs - Center Right) -->
   <g id="UrsaMajor">
     <!-- Dipper bowl & handle -->
-    <polyline points="710,270 682,255 675,290 715,302 710,270" class="star-line"/>
-    <polyline points="715,302 755,315 780,338 812,352" class="star-line"/>
+    <polyline points="710,270 682,255 675,290 715,302 710,270" class="c-line"/>
+    <polyline points="715,302 755,315 780,338 812,352" class="c-line"/>
     <!-- Feet / Body extension -->
-    <line x1="682" y1="255" x2="658" y2="245" class="secondary-line"/>
-    <line x1="675" y1="290" x2="648" y2="310" class="secondary-line"/>
-    <line x1="648" y1="310" x2="635" y2="335" class="secondary-line"/>
+    <line x1="682" y1="255" x2="658" y2="245" class="c-dash"/>
+    <line x1="675" y1="290" x2="648" y2="310" class="c-dash"/>
+    <line x1="648" y1="310" x2="635" y2="335" class="c-dash"/>
 
-    <!-- Stars -->
-    <circle cx="710" cy="270" r="3.2" fill="#ffffff" filter="url(#intenseGlow)"/> <!-- Dubhe -->
-    <circle cx="682" cy="255" r="3.0" fill="#ffd866" filter="url(#glow)"/> <!-- Merak -->
-    <circle cx="675" cy="290" r="2.8" fill="#ffd866" filter="url(#glow)"/> <!-- Phecda -->
-    <circle cx="715" cy="302" r="3.0" fill="#ffd866" filter="url(#glow)"/> <!-- Megrez -->
-    <circle cx="755" cy="315" r="3.2" fill="#ffd866" filter="url(#glow)"/> <!-- Alioth -->
-    <circle cx="780" cy="338" r="3.2" fill="#ffffff" filter="url(#intenseGlow)"/> <!-- Mizar & Alcor -->
-    <circle cx="812" cy="352" r="3.4" fill="#ffffff" filter="url(#intenseGlow)"/> <!-- Alkaid -->
+    <use href="#star4pt" x="710" y="270"/> <!-- Dubhe -->
+    <circle cx="682" cy="255" r="3.0" fill="#fef08a"/> <!-- Merak -->
+    <circle cx="675" cy="290" r="2.8" fill="#fef08a"/> <!-- Phecda -->
+    <circle cx="715" cy="302" r="3.0" fill="#fef08a"/> <!-- Megrez -->
+    <use href="#star4pt" x="755" y="315"/> <!-- Alioth -->
+    <use href="#star4pt" x="780" y="338"/> <!-- Mizar -->
+    <circle cx="783" cy="334" r="1.5" fill="#ffffff"/> <!-- Alcor -->
+    <use href="#star4pt" x="812" y="352"/> <!-- Alkaid -->
     
-    <circle cx="658" cy="245" r="2.0" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="648" cy="310" r="2.0" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="635" cy="335" r="2.2" fill="#ffd866" filter="url(#glow)"/>
-
-    <text x="695" y="325" class="const-label">Ursa</text>
-    <text x="695" y="338" class="const-label">Major</text>
+    <circle cx="658" cy="245" r="2.0" fill="#fef08a"/>
+    <circle cx="648" cy="310" r="2.0" fill="#fef08a"/>
+    <circle cx="635" cy="335" r="2.2" fill="#fef08a"/>
   </g>
 
-  <!-- 4. DRACO - Serpent winding between Bears -->
-  <g id="Draco">
-    <!-- Winding dragon tail and head -->
-    <polyline points="630,225 615,200 580,185 540,175 495,178 465,195 440,210" class="star-line"/>
-    <polyline points="630,225 655,215 675,190 665,165 640,155 632,168 640,155" class="star-line"/>
-    <polygon points="665,165 682,152 690,165 675,175" stroke="#eed27b" stroke-width="1.2" fill="none"/>
+  <!-- 11. GEMINI & CANCER (Top Right) -->
+  <g id="GeminiCancer">
+    <polyline points="710,135 680,105 650,85" class="c-line"/>
+    <polyline points="730,120 700,90 670,70" class="c-line"/>
+    <line x1="710" y1="135" x2="730" y2="120" class="c-line"/>
+    <line x1="680" y1="105" x2="700" y2="90" class="c-line"/>
+    <line x1="650" y1="85" x2="670" y2="70" class="c-line"/>
 
-    <!-- Stars -->
-    <circle cx="630" cy="225" r="2.4" fill="#ffd866" filter="url(#glow)"/> <!-- Thuban -->
-    <circle cx="615" cy="200" r="2.2" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="580" cy="185" r="2.2" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="540" cy="175" r="2.5" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="665" cy="165" r="2.8" fill="#ffd866" filter="url(#glow)"/> <!-- Eltanin -->
-    <circle cx="682" cy="152" r="2.6" fill="#ffd866" filter="url(#glow)"/> <!-- Rastaban -->
-    <circle cx="690" cy="165" r="2.2" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="675" cy="175" r="2.2" fill="#ffd866" filter="url(#glow)"/>
+    <!-- Cancer inverted Y -->
+    <polyline points="800,165 830,185 860,175" class="c-line"/>
+    <line x1="830" y1="185" x2="835" y2="215" class="c-line"/>
 
-    <text x="615" y="165" class="const-label">Draco</text>
+    <use href="#star4pt" x="730" y="120"/> <!-- Pollux -->
+    <use href="#star4pt" x="710" y="135"/> <!-- Castor -->
+    <circle cx="680" cy="105" r="2.5" fill="#fef08a"/>
+    <circle cx="700" cy="90" r="2.5" fill="#fef08a"/>
+    <circle cx="650" cy="85" r="3.0" fill="#fde047"/> <!-- Alhena -->
+    <circle cx="670" cy="70" r="2.2" fill="#fef08a"/>
+
+    <circle cx="800" cy="165" r="2.4" fill="#fef08a"/>
+    <circle cx="830" cy="185" r="2.6" fill="#fef08a"/>
+    <circle cx="860" cy="175" r="2.4" fill="#fef08a"/>
+    <circle cx="835" cy="215" r="2.2" fill="#fef08a"/>
   </g>
 
-  <!-- 5. CEPHEUS - Crown near Polaris -->
-  <g id="Cepheus">
-    <polygon points="460,285 435,260 410,285 425,325 455,320" class="star-line"/>
-    <line x1="435" y1="260" x2="425" y2="325" class="secondary-line"/>
+  <!-- 12. LEO & LEO MINOR (Right Mid-Upper) -->
+  <g id="Leo">
+    <!-- Sickle and Triangle -->
+    <polyline points="880,240 855,215 865,190 890,180 905,195 900,210" class="c-line"/>
+    <polyline points="880,240 935,260 960,230 900,210" class="c-line"/>
 
-    <circle cx="460" cy="285" r="2.8" fill="#ffd866" filter="url(#glow)"/> <!-- Alderamin -->
-    <circle cx="435" cy="260" r="2.4" fill="#ffd866" filter="url(#glow)"/> <!-- Alfirk -->
-    <circle cx="410" cy="285" r="2.5" fill="#ffd866" filter="url(#glow)"/> <!-- Errai -->
-    <circle cx="425" cy="325" r="2.2" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="455" cy="320" r="2.2" fill="#ffd866" filter="url(#glow)"/>
-
-    <text x="408" y="305" class="const-label" text-anchor="middle">Cepheus</text>
+    <use href="#star4pt-lg" x="880" y="240"/> <!-- REGULUS -->
+    <use href="#star4pt" x="960" y="230"/> <!-- Denebola -->
+    <circle cx="900" cy="210" r="3.0" fill="#fde047"/> <!-- Algieba -->
+    <circle cx="890" cy="180" r="2.6" fill="#fef08a"/>
+    <circle cx="865" cy="190" r="2.4" fill="#fef08a"/>
+    <circle cx="855" cy="215" r="2.2" fill="#fef08a"/>
+    <circle cx="935" cy="260" r="2.6" fill="#fef08a"/>
   </g>
 
-  <!-- 6. CYGNUS (Northern Cross) - Upper Center-Right -->
-  <g id="Cygnus">
-    <!-- Cross structure -->
-    <line x1="430" y1="380" x2="350" y2="445" class="star-line"/> <!-- Deneb to Albireo -->
-    <line x1="380" y1="390" x2="420" y2="440" class="star-line"/> <!-- Wings -->
-    <line x1="420" y1="440" x2="440" y2="470" class="secondary-line"/>
-    <line x1="380" y1="390" x2="360" y2="365" class="secondary-line"/>
-
-    <circle cx="430" cy="380" r="3.8" fill="#ffffff" filter="url(#intenseGlow)"/> <!-- Deneb (Alpha) -->
-    <circle cx="395" cy="410" r="3.0" fill="#ffd866" filter="url(#glow)"/> <!-- Sadr -->
-    <circle cx="350" cy="445" r="2.8" fill="#ffd866" filter="url(#glow)"/> <!-- Albireo -->
-    <circle cx="380" cy="390" r="2.6" fill="#ffd866" filter="url(#glow)"/> <!-- Gienah -->
-    <circle cx="420" cy="440" r="2.6" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="440" cy="470" r="2.0" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="360" cy="365" r="2.0" fill="#ffd866" filter="url(#glow)"/>
-
-    <text x="390" y="365" class="const-label" text-anchor="middle">Cygnus</text>
-  </g>
-
-  <!-- 7. LYRA - Vega (Brilliant Alpha Star) -->
-  <g id="Lyra">
-    <polygon points="505,405 525,415 515,445 495,435" class="star-line"/>
-    <line x1="510" y1="375" x2="505" y2="405" class="star-line"/>
-    <line x1="510" y1="375" x2="525" y2="415" class="secondary-line"/>
-
-    <circle cx="510" cy="375" r="4.5" fill="#ffffff" filter="url(#intenseGlow)"/> <!-- VEGA -->
-    <circle cx="505" cy="405" r="2.5" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="525" cy="415" r="2.4" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="515" cy="445" r="2.8" fill="#ffd866" filter="url(#glow)"/> <!-- Sheliak -->
-    <circle cx="495" cy="435" r="2.8" fill="#ffd866" filter="url(#glow)"/> <!-- Sulafat -->
-
-    <text x="525" y="375" class="const-label">Lyra</text>
-  </g>
-
-  <!-- 8. PEGASUS & ANDROMEDA - Left Wing -->
-  <g id="PegasusAndromeda">
-    <!-- Great Square of Pegasus -->
-    <polygon points="275,325 330,325 345,395 280,385" class="star-line"/>
-    <!-- Head & neck -->
-    <polyline points="345,395 385,420 405,410" class="star-line"/>
-    <polyline points="280,385 245,410 220,405" class="star-line"/>
-    
-    <!-- Andromeda chain connected from Alpheratz (330, 325) -->
-    <polyline points="330,325 365,275 400,240 435,220" class="star-line"/>
-    <line x1="365" y1="275" x2="350" y2="250" class="secondary-line"/>
-    <line x1="400" y1="240" x2="390" y2="215" class="secondary-line"/>
-
-    <!-- Stars -->
-    <circle cx="330" cy="325" r="3.4" fill="#ffffff" filter="url(#intenseGlow)"/> <!-- Alpheratz -->
-    <circle cx="275" cy="325" r="3.0" fill="#ffd866" filter="url(#glow)"/> <!-- Scheat -->
-    <circle cx="280" cy="385" r="3.2" fill="#ffd866" filter="url(#glow)"/> <!-- Markab -->
-    <circle cx="345" cy="395" r="3.0" fill="#ffd866" filter="url(#glow)"/> <!-- Algenib -->
-    <circle cx="385" cy="420" r="2.5" fill="#ffd866" filter="url(#glow)"/> <!-- Enif -->
-    <circle cx="405" cy="410" r="2.2" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="245" cy="410" r="2.4" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="220" cy="405" r="2.0" fill="#ffd866" filter="url(#glow)"/>
-
-    <circle cx="365" cy="275" r="3.2" fill="#ffd866" filter="url(#glow)"/> <!-- Mirach -->
-    <circle cx="400" cy="240" r="3.2" fill="#ffffff" filter="url(#intenseGlow)"/> <!-- Almach -->
-    <circle cx="435" cy="220" r="2.2" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="350" cy="250" r="2.0" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="390" cy="215" r="2.0" fill="#ffd866" filter="url(#glow)"/>
-
-    <text x="300" y="360" class="const-label" text-anchor="middle">Pegasus</text>
-    <text x="345" y="270" class="const-label">Andromeda</text>
-  </g>
-
-  <!-- 9. AQUARIUS & PISCES - Far Left / Bottom Left -->
-  <g id="AquariusPisces">
-    <!-- Pisces V shape -->
-    <polyline points="200,310 230,345 255,370 240,410 205,430 185,410 200,370 240,410" class="star-line"/>
-    <polyline points="200,310 180,290 170,255" class="secondary-line"/>
-
-    <!-- Aquarius Water Jar & Stream -->
-    <polyline points="180,480 205,470 220,490 205,510 180,480" class="star-line"/>
-    <polyline points="205,470 235,465 260,480" class="star-line"/>
-    <!-- Water flows -->
-    <path d="M 220 490 Q 240 530 225 560 T 250 610" class="secondary-line"/>
-    <path d="M 205 510 Q 215 545 195 580 T 215 625" class="secondary-line"/>
-
-    <!-- Stars -->
-    <circle cx="200" cy="310" r="2.8" fill="#ffd866" filter="url(#glow)"/> <!-- Alrescha -->
-    <circle cx="230" cy="345" r="2.2" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="255" cy="370" r="2.4" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="240" cy="410" r="2.6" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="180" cy="480" r="3.0" fill="#ffd866" filter="url(#glow)"/> <!-- Sadalmelik -->
-    <circle cx="205" cy="470" r="3.0" fill="#ffffff" filter="url(#intenseGlow)"/> <!-- Sadalsuud -->
-    <circle cx="220" cy="490" r="2.4" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="260" cy="480" r="2.5" fill="#ffd866" filter="url(#glow)"/> <!-- Skat -->
-    <circle cx="250" cy="610" r="2.2" fill="#ffd866" filter="url(#glow)"/>
-
-    <text x="210" y="325" class="const-label">Pisces</text>
-    <text x="235" y="470" class="const-label">Aquarius</text>
-  </g>
-
-  <!-- 10. ORION & TAURUS - Top Left -->
-  <g id="OrionTaurus">
-    <!-- Taurus horns & Aldebaran -->
-    <polyline points="370,140 335,160 305,175 270,165" class="star-line"/>
-    <polyline points="335,160 330,195 355,205 380,185 370,140" class="star-line"/>
-    <!-- Pleiades cluster dot group -->
-    <circle cx="265" cy="140" r="1.4" fill="#ffffff" filter="url(#glow)"/>
-    <circle cx="268" cy="143" r="1.3" fill="#ffffff"/>
-    <circle cx="262" cy="144" r="1.2" fill="#ffffff"/>
-    <circle cx="270" cy="138" r="1.2" fill="#ffffff"/>
-
-    <!-- Orion - Shoulders, Belt, Rigel, Saiph, Bow -->
-    <!-- Betelgeuse (380, 85) to Bellatrix (330, 80) -->
-    <line x1="380" y1="85" x2="330" y2="80" class="star-line"/>
-    <!-- Belt -->
-    <polyline points="370,50 355,47 340,44" class="star-line"/>
-    <!-- Connecting hourglass -->
-    <line x1="380" y1="85" x2="370" y2="50" class="star-line"/>
-    <line x1="330" y1="80" x2="340" y2="44" class="star-line"/>
-    <!-- Rigel (320, 15) & Saiph (375, 20) -->
-    <line x1="340" y1="44" x2="320" y2="15" class="star-line"/>
-    <line x1="370" y1="50" x2="375" y2="20" class="star-line"/>
-    <!-- Bow -->
-    <path d="M 305 60 Q 295 80 305 100" class="secondary-line"/>
-
-    <!-- Stars -->
-    <circle cx="355" cy="205" r="4.2" fill="#f97316" filter="url(#intenseGlow)"/> <!-- ALDEBARAN (Orange giant) -->
-    <circle cx="370" cy="140" r="3.0" fill="#ffd866" filter="url(#glow)"/> <!-- Elnath -->
-    <circle cx="335" cy="160" r="2.5" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="305" cy="175" r="2.2" fill="#ffd866" filter="url(#glow)"/>
-
-    <circle cx="380" cy="85" r="4.2" fill="#ef4444" filter="url(#intenseGlow)"/> <!-- BETELGEUSE (Red supergiant) -->
-    <circle cx="330" cy="80" r="3.4" fill="#ffffff" filter="url(#intenseGlow)"/> <!-- Bellatrix -->
-    <circle cx="370" cy="50" r="3.0" fill="#ffffff" filter="url(#glow)"/> <!-- Alnitak -->
-    <circle cx="355" cy="47" r="2.8" fill="#ffffff" filter="url(#glow)"/> <!-- Alnilam -->
-    <circle cx="340" cy="44" r="3.0" fill="#ffffff" filter="url(#glow)"/> <!-- Mintaka -->
-    <circle cx="320" cy="15" r="4.2" fill="#67e8f9" filter="url(#intenseGlow)"/> <!-- RIGEL (Blue-white supergiant) -->
-    <circle cx="375" cy="20" r="3.0" fill="#ffd866" filter="url(#glow)"/> <!-- Saiph -->
-
-    <text x="320" y="190" class="const-label">Taurus</text>
-    <text x="390" y="70" class="const-label">Orion</text>
-  </g>
-
-  <!-- 11. GEMINI, CANCER & LEO - Top Right -->
-  <g id="GeminiLeo">
-    <!-- Gemini twins -->
-    <polyline points="710,135 680,105 650,85" class="star-line"/>
-    <polyline points="730,120 700,90 670,70" class="star-line"/>
-    <line x1="710" y1="135" x2="730" y2="120" class="star-line"/>
-    <line x1="680" y1="105" x2="700" y2="90" class="star-line"/>
-    <line x1="650" y1="85" x2="670" y2="70" class="star-line"/>
-
-    <!-- Leo Sickle and Triangle -->
-    <polyline points="850,225 825,200 835,175 860,165 875,180 870,195" class="star-line"/>
-    <polyline points="850,225 905,245 930,215 870,195" class="star-line"/>
-
-    <!-- Stars -->
-    <circle cx="730" cy="120" r="3.6" fill="#fef08a" filter="url(#intenseGlow)"/> <!-- Pollux -->
-    <circle cx="710" cy="135" r="3.4" fill="#ffffff" filter="url(#intenseGlow)"/> <!-- Castor -->
-    <circle cx="680" cy="105" r="2.5" fill="#ffd866" filter="url(#glow)"/> <!-- Wasat -->
-    <circle cx="700" cy="90" r="2.5" fill="#ffd866" filter="url(#glow)"/> <!-- Mekbuda -->
-    <circle cx="650" cy="85" r="3.0" fill="#ffd866" filter="url(#glow)"/> <!-- Alhena -->
-    <circle cx="670" cy="70" r="2.2" fill="#ffd866" filter="url(#glow)"/>
-
-    <circle cx="850" cy="225" r="4.0" fill="#ffffff" filter="url(#intenseGlow)"/> <!-- REGULUS (Alpha Leonis) -->
-    <circle cx="930" cy="215" r="3.4" fill="#ffffff" filter="url(#intenseGlow)"/> <!-- Denebola -->
-    <circle cx="870" cy="195" r="3.0" fill="#ffd866" filter="url(#glow)"/> <!-- Algieba -->
-    <circle cx="860" cy="165" r="2.6" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="835" cy="175" r="2.4" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="825" cy="200" r="2.2" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="905" cy="245" r="2.6" fill="#ffd866" filter="url(#glow)"/>
-
-    <text x="735" y="100" class="const-label">Gemini</text>
-    <text x="890" y="190" class="const-label">Leo</text>
-  </g>
-
-  <!-- 12. BOÖTES & CORONA BOREALIS - Right Center -->
+  <!-- 13. BOÖTES & CORONA BOREALIS (Right Center) -->
   <g id="BootesCorona">
-    <!-- Boötes Kite shape -->
-    <polygon points="860,370 885,335 870,295 830,310 820,345" class="star-line"/>
-    <polyline points="870,295 875,265" class="secondary-line"/>
+    <!-- Boötes Kite -->
+    <polygon points="860,370 885,335 870,295 830,310 820,345" class="c-line"/>
+    <polyline points="870,295 875,265" class="c-dash"/>
     
-    <!-- Corona Borealis semicircle crown -->
-    <path d="M 770 410 Q 795 440 825 425" class="star-line"/>
+    <!-- Corona Borealis Tiara -->
+    <path d="M 770 410 Q 795 440 825 425" class="c-line"/>
 
-    <!-- Stars -->
-    <circle cx="860" cy="370" r="4.5" fill="#fb923c" filter="url(#intenseGlow)"/> <!-- ARCTURUS (Brilliant golden orange) -->
-    <circle cx="885" cy="335" r="3.0" fill="#ffd866" filter="url(#glow)"/> <!-- Izar -->
-    <circle cx="870" cy="295" r="2.6" fill="#ffd866" filter="url(#glow)"/> <!-- Seginus -->
-    <circle cx="830" cy="310" r="2.8" fill="#ffd866" filter="url(#glow)"/> <!-- Nekkar -->
-    <circle cx="820" cy="345" r="2.4" fill="#ffd866" filter="url(#glow)"/>
+    <use href="#star4pt-lg" x="860" y="370"/> <!-- ARCTURUS (Golden Orange Alpha) -->
+    <circle cx="885" cy="335" r="3.0" fill="#fde047"/> <!-- Izar -->
+    <circle cx="870" cy="295" r="2.6" fill="#fef08a"/> <!-- Seginus -->
+    <circle cx="830" cy="310" r="2.8" fill="#fef08a"/> <!-- Nekkar -->
+    <circle cx="820" cy="345" r="2.4" fill="#fef08a"/>
 
-    <circle cx="795" cy="430" r="3.4" fill="#ffffff" filter="url(#intenseGlow)"/> <!-- Alphecca (Gemma) -->
-    <circle cx="770" cy="410" r="2.2" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="782" cy="422" r="2.0" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="810" cy="432" r="2.2" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="825" cy="425" r="2.0" fill="#ffd866" filter="url(#glow)"/>
-
-    <text x="895" y="325" class="const-label">Boötes</text>
-    <text x="800" y="450" class="const-label-sub" text-anchor="middle">Corona Borealis</text>
+    <use href="#star4pt" x="795" y="430"/> <!-- Alphecca -->
+    <circle cx="770" cy="410" r="2.2" fill="#fef08a"/>
+    <circle cx="782" cy="422" r="2.0" fill="#fef08a"/>
+    <circle cx="810" cy="432" r="2.2" fill="#fef08a"/>
+    <circle cx="825" cy="425" r="2.0" fill="#fef08a"/>
   </g>
 
-  <!-- 13. HERCULES & SERPENS / OPHIUCHUS - Center Bottom -->
+  <!-- 14. HERCULES, OPHIUCHUS & SERPENS (Center Bottom) -->
   <g id="HerculesOphiuchus">
-    <!-- Hercules Keystone & limbs -->
-    <polygon points="635,420 670,425 680,460 630,455" class="star-line"/>
-    <polyline points="635,420 610,395 585,390" class="star-line"/>
-    <polyline points="670,425 700,405" class="star-line"/>
-    <polyline points="630,455 615,490 640,515" class="star-line"/>
-    <polyline points="680,460 710,485 735,475" class="star-line"/>
+    <!-- Hercules Keystone -->
+    <polygon points="635,420 670,425 680,460 630,455" class="c-line"/>
+    <polyline points="635,420 610,395 585,390" class="c-line"/>
+    <polyline points="670,425 700,405" class="c-line"/>
+    <polyline points="630,455 615,490 640,515" class="c-line"/>
+    <polyline points="680,460 710,485 735,475" class="c-line"/>
 
-    <!-- Ophiuchus polygon -->
-    <polygon points="640,515 710,485 750,560 670,610 610,560" class="star-line"/>
+    <!-- Ophiuchus -->
+    <polygon points="640,515 710,485 750,560 670,610 610,560" class="c-line"/>
 
-    <!-- Stars -->
-    <circle cx="640" cy="515" r="3.4" fill="#ffffff" filter="url(#intenseGlow)"/> <!-- Rasalhague -->
-    <circle cx="615" cy="490" r="3.2" fill="#ffd866" filter="url(#glow)"/> <!-- Kornephoros -->
-    <circle cx="635" cy="420" r="2.6" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="670" cy="425" r="2.6" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="680" cy="460" r="2.5" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="630" cy="455" r="2.5" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="710" cy="485" r="3.0" fill="#ffd866" filter="url(#glow)"/> <!-- Cebalrai -->
-    <circle cx="750" cy="560" r="2.8" fill="#ffd866" filter="url(#glow)"/> <!-- Sabik -->
-    <circle cx="670" cy="610" r="2.6" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="610" cy="560" r="3.0" fill="#ffd866" filter="url(#glow)"/> <!-- Yed Prior -->
-
-    <text x="655" y="443" class="const-label" text-anchor="middle">Hercules</text>
-    <text x="670" y="555" class="const-label" text-anchor="middle">Ophiuchus</text>
+    <use href="#star4pt" x="640" y="515"/> <!-- Rasalhague -->
+    <circle cx="615" cy="490" r="3.2" fill="#fde047"/> <!-- Kornephoros -->
+    <circle cx="635" cy="420" r="2.6" fill="#fef08a"/>
+    <circle cx="670" cy="425" r="2.6" fill="#fef08a"/>
+    <circle cx="680" cy="460" r="2.5" fill="#fef08a"/>
+    <circle cx="630" cy="455" r="2.5" fill="#fef08a"/>
+    <circle cx="710" cy="485" r="3.0" fill="#fef08a"/> <!-- Cebalrai -->
+    <circle cx="750" cy="560" r="2.8" fill="#fef08a"/> <!-- Sabik -->
+    <circle cx="670" cy="610" r="2.6" fill="#fef08a"/>
+    <circle cx="610" cy="560" r="3.0" fill="#fde047"/> <!-- Yed Prior -->
   </g>
 
-  <!-- 14. AQUILA - Bottom Left / Center -->
+  <!-- 15. AQUILA (Bottom Left/Center) -->
   <g id="Aquila">
-    <polyline points="455,510 490,525 525,540" class="star-line"/>
-    <polygon points="490,525 470,565 520,580 535,550" class="star-line"/>
+    <polyline points="455,510 490,525 525,540" class="c-line"/>
+    <polygon points="490,525 470,565 520,580 535,550" class="c-line"/>
 
-    <circle cx="490" cy="525" r="4.2" fill="#ffffff" filter="url(#intenseGlow)"/> <!-- ALTAIR -->
-    <circle cx="455" cy="510" r="2.8" fill="#ffd866" filter="url(#glow)"/> <!-- Tarazed -->
-    <circle cx="525" cy="540" r="2.6" fill="#ffd866" filter="url(#glow)"/> <!-- Alshain -->
-    <circle cx="470" cy="565" r="2.4" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="520" cy="580" r="2.4" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="535" cy="550" r="2.2" fill="#ffd866" filter="url(#glow)"/>
-
-    <text x="490" y="505" class="const-label" text-anchor="middle">Aquila</text>
+    <use href="#star4pt-lg" x="490" y="525"/> <!-- ALTAIR -->
+    <circle cx="455" cy="510" r="2.8" fill="#fde047"/> <!-- Tarazed -->
+    <circle cx="525" cy="540" r="2.6" fill="#fef08a"/> <!-- Alshain -->
+    <circle cx="470" cy="565" r="2.4" fill="#fef08a"/>
+    <circle cx="520" cy="580" r="2.4" fill="#fef08a"/>
+    <circle cx="535" cy="550" r="2.2" fill="#fef08a"/>
   </g>
 
-  <!-- 15. SCORPIUS & VIRGO - Bottom Right -->
-  <g id="ScorpiusVirgo">
-    <!-- Virgo Spica line -->
-    <polyline points="960,380 990,430 965,470 940,450" class="star-line"/>
-    <circle cx="965" cy="470" r="4.2" fill="#93c5fd" filter="url(#intenseGlow)"/> <!-- SPICA (Luminous blue-white) -->
-    <circle cx="960" cy="380" r="3.0" fill="#ffd866" filter="url(#glow)"/> <!-- Porrima -->
-    <circle cx="990" cy="430" r="2.6" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="940" cy="450" r="2.4" fill="#ffd866" filter="url(#glow)"/>
-    <text x="980" y="475" class="const-label">Virgo</text>
+  <!-- 16. VIRGO & SCORPIUS (Bottom Right) -->
+  <g id="VirgoScorpius">
+    <!-- Virgo -->
+    <polyline points="960,380 990,430 965,470 940,450" class="c-line"/>
+    <use href="#star4pt-lg" x="965" y="470"/> <!-- SPICA -->
+    <circle cx="960" cy="380" r="3.0" fill="#fef08a"/>
+    <circle cx="990" cy="430" r="2.6" fill="#fef08a"/>
+    <circle cx="940" cy="450" r="2.4" fill="#fef08a"/>
 
-    <!-- Scorpius - Antares, Claws & Tail -->
-    <polyline points="850,535 880,520 895,505" class="star-line"/> <!-- Claws -->
-    <polyline points="850,535 870,560 855,595 825,620 790,625 765,605 775,585" class="star-line"/> <!-- Curved Stinger -->
+    <!-- Scorpius Stinger -->
+    <polyline points="850,535 880,520 895,505" class="c-line"/>
+    <polyline points="850,535 870,560 855,595 825,620 790,625 765,605 775,585" class="c-line"/>
 
-    <circle cx="850" cy="535" r="4.5" fill="#ef4444" filter="url(#intenseGlow)"/> <!-- ANTARES (Fiery red supergiant heart) -->
-    <circle cx="880" cy="520" r="2.8" fill="#ffd866" filter="url(#glow)"/> <!-- Graffias -->
-    <circle cx="895" cy="505" r="2.6" fill="#ffd866" filter="url(#glow)"/> <!-- Dschubba -->
-    <circle cx="870" cy="560" r="2.6" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="855" cy="595" r="3.0" fill="#ffd866" filter="url(#glow)"/> <!-- Wei -->
-    <circle cx="825" cy="620" r="2.8" fill="#ffd866" filter="url(#glow)"/> <!-- Sargas -->
-    <circle cx="790" cy="625" r="2.6" fill="#ffd866" filter="url(#glow)"/>
-    <circle cx="765" cy="605" r="3.4" fill="#ffffff" filter="url(#intenseGlow)"/> <!-- Shaula (The Stinger) -->
-    <circle cx="775" cy="585" r="2.8" fill="#ffd866" filter="url(#glow)"/> <!-- Lesath -->
-
-    <text x="890" y="550" class="const-label">Scorpius</text>
+    <use href="#star4pt-lg" x="850" y="535"/> <!-- ANTARES (Red Supergiant) -->
+    <circle cx="880" cy="520" r="2.8" fill="#fef08a"/>
+    <circle cx="895" cy="505" r="2.6" fill="#fef08a"/>
+    <circle cx="870" cy="560" r="2.6" fill="#fef08a"/>
+    <circle cx="855" cy="595" r="3.0" fill="#fef08a"/>
+    <circle cx="825" cy="620" r="2.8" fill="#fef08a"/>
+    <circle cx="790" cy="625" r="2.6" fill="#fef08a"/>
+    <use href="#star4pt" x="765" y="605"/> <!-- Shaula (Stinger) -->
+    <circle cx="775" cy="585" r="2.8" fill="#fef08a"/>
   </g>
 
-
-  <!-- ================= ASTRONOMICAL FRAME & MONTH LABELS ================= -->
-  <!-- Subtle circular calendar ring inspired directly by the Britannica northern sky map -->
-  <g opacity="0.85">
-    <path id="monthPathTop" d="M 270 340 A 330 330 0 0 1 930 340" fill="none"/>
-    <path id="monthPathBottom" d="M 930 340 A 330 330 0 0 1 270 340" fill="none"/>
-
-    <text class="ring-label">
-      <textPath href="#monthPathTop" startOffset="12%" text-anchor="middle">OCTOBER</textPath>
-      <textPath href="#monthPathTop" startOffset="28%" text-anchor="middle">NOVEMBER</textPath>
-      <textPath href="#monthPathTop" startOffset="44%" text-anchor="middle">DECEMBER</textPath>
-      <textPath href="#monthPathTop" startOffset="60%" text-anchor="middle">JANUARY</textPath>
-      <textPath href="#monthPathTop" startOffset="76%" text-anchor="middle">FEBRUARY</textPath>
-      <textPath href="#monthPathTop" startOffset="92%" text-anchor="middle">MARCH</textPath>
-    </text>
-
-    <text class="ring-label">
-      <textPath href="#monthPathBottom" startOffset="12%" text-anchor="middle">APRIL</textPath>
-      <textPath href="#monthPathBottom" startOffset="28%" text-anchor="middle">MAY</textPath>
-      <textPath href="#monthPathBottom" startOffset="44%" text-anchor="middle">JUNE</textPath>
-      <textPath href="#monthPathBottom" startOffset="60%" text-anchor="middle">JULY</textPath>
-      <textPath href="#monthPathBottom" startOffset="76%" text-anchor="middle">AUGUST</textPath>
-      <textPath href="#monthPathBottom" startOffset="92%" text-anchor="middle">SEPTEMBER</textPath>
-    </text>
-  </g>
-
-
-  <!-- ================= CENTERPIECE TITLE & POLAR COMPASS ================= -->
+  <!-- ================= CLEAN CENTERED TITLE ================= -->
   <g transform="translate(0, 0)">
-    <!-- Subtle semi-transparent dark vignette behind title to guarantee 100% legibility -->
-    <rect x="360" y="15" width="480" height="68" rx="34" fill="#040817" fill-opacity="0.75" stroke="#4162a8" stroke-width="0.8" stroke-opacity="0.4"/>
+    <!-- Soft cosmic vignette pill background for pristine contrast -->
+    <rect x="360" y="16" width="480" height="66" rx="33" fill="#060e18" fill-opacity="0.8" stroke="#38bdf8" stroke-width="0.75" stroke-opacity="0.35"/>
 
-    <!-- Radiant Polaris 8-Point Compass Star Above Title -->
+    <!-- Polaris 8-Point Compass Star Above Title -->
     <g transform="translate(600, 32)">
-      <!-- Outer diamond rays -->
-      <path d="M 0 -14 L 3 -3 L 14 0 L 3 3 L 0 14 L -3 3 L -14 0 L -3 -3 Z" fill="url(#starGlowGold)" filter="url(#intenseGlow)"/>
-      <path d="M 0 -11 L 2 -2 L 11 0 L 2 2 L 0 11 L -2 2 L -11 0 L -2 -2 Z" fill="#ffffff"/>
-      <!-- Diagonal subtle rays -->
-      <path d="M -5 -5 L 0 -1.5 L 5 -5 L 1.5 0 L 5 5 L 0 1.5 L -5 5 L -1.5 0 Z" fill="#fde047" opacity="0.8"/>
-      <circle cx="0" cy="0" r="2.2" fill="#ffffff"/>
+      <path d="M 0 -13 L 2.5 -2.5 L 13 0 L 2.5 2.5 L 0 13 L -2.5 2.5 L -13 0 L -2.5 -2.5 Z" fill="#ffffff" filter="url(#brightHalo)"/>
+      <path d="M 0 -10 L 2 -2 L 10 0 L 2 2 L 0 10 L -2 2 L -10 0 L -2 -2 Z" fill="#fef08a"/>
+      <path d="M -4.5 -4.5 L 0 -1.2 L 4.5 -4.5 L 1.2 0 L 4.5 4.5 L 0 1.2 L -4.5 4.5 L -1.2 0 Z" fill="#fde047" opacity="0.85"/>
+      <circle cx="0" cy="0" r="2" fill="#ffffff"/>
     </g>
 
-    <!-- Main Title: Hello World, I'm Swashua! -->
-    <text x="600" y="66" text-anchor="middle" class="astronomy-title">Hello World, I'm Swashua!</text>
+    <!-- Headline -->
+    <text x="600" y="65" text-anchor="middle" class="main-headline">Hello World, I'm Swashua!</text>
 
-    <!-- Side Astronomical Flourishes -->
-    <g stroke="#e2b960" stroke-width="0.8" opacity="0.6">
-      <line x1="390" y1="49" x2="435" y2="49"/>
-      <circle cx="385" cy="49" r="2" fill="#fde047"/>
-      <line x1="765" y1="49" x2="810" y2="49"/>
-      <circle cx="815" cy="49" r="2" fill="#fde047"/>
+    <!-- Subtle Golden Star Accents -->
+    <g stroke="#eed27b" stroke-width="0.8" opacity="0.7">
+      <line x1="395" y1="49" x2="435" y2="49"/>
+      <circle cx="390" cy="49" r="1.8" fill="#fde047"/>
+      <line x1="765" y1="49" x2="805" y2="49"/>
+      <circle cx="810" cy="49" r="1.8" fill="#fde047"/>
     </g>
   </g>
 
