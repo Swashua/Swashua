@@ -1,0 +1,314 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="100%" height="900">
+  <defs>
+    <!-- Deep Cosmos Space Gradient -->
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#02040a"/>
+      <stop offset="35%" stop-color="#070c20"/>
+      <stop offset="70%" stop-color="#0b1536"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+
+    <!-- Nebulae -->
+    <radialGradient id="nebula1" cx="20%" cy="25%" r="60%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.32"/>
+      <stop offset="40%" stop-color="#8b5cf6" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#02040a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="nebula2" cx="80%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.28"/>
+      <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#02040a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="nebula3" cx="50%" cy="80%" r="50%">
+      <stop offset="0%" stop-color="#ec4899" stop-opacity="0.2"/>
+      <stop offset="45%" stop-color="#3b82f6" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#02040a" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Glowing Filters -->
+    <filter id="starGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="superGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="b1"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="b2"/>
+      <feMerge>
+        <feMergeNode in="b1"/>
+        <feMergeNode in="b2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes pulse {
+      0%, 100% { opacity: 0.35; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.15); }
+    }
+    .constellation-line {
+      stroke: rgba(147, 197, 253, 0.45);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+    }
+    .constellation-dashed {
+      stroke: rgba(191, 219, 254, 0.25);
+      stroke-width: 1.2;
+      stroke-dasharray: 4 4;
+    }
+    .constellation-label {
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 13px;
+      fill: #93c5fd;
+      letter-spacing: 4px;
+      font-weight: 600;
+      opacity: 0.85;
+    }
+    .star-name {
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 10px;
+      fill: #e2e8f0;
+      letter-spacing: 1.5px;
+      opacity: 0.65;
+    }
+    .title-main {
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 42px;
+      font-weight: 800;
+      fill: #ffffff;
+      letter-spacing: 8px;
+    }
+    .title-sub {
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      fill: #93c5fd;
+      letter-spacing: 6px;
+      opacity: 0.9;
+    }
+    .card-box {
+      fill: rgba(15, 23, 42, 0.6);
+      stroke: rgba(147, 197, 253, 0.22);
+      stroke-width: 1.2;
+      rx: 16px;
+    }
+    .card-title {
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      fill: #38bdf8;
+      letter-spacing: 2px;
+    }
+    .card-body {
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 13px;
+      fill: #cbd5e1;
+      line-height: 1.6;
+    }
+  </style>
+
+  <!-- Deep Cosmos Canvas Base -->
+  <rect width="100%" height="100%" fill="url(#skyGrad)" rx="20"/>
+  <rect width="100%" height="100%" fill="url(#nebula1)" rx="20"/>
+  <rect width="100%" height="100%" fill="url(#nebula2)" rx="20"/>
+  <rect width="100%" height="100%" fill="url(#nebula3)" rx="20"/>
+
+  <!-- Celestial Grid Lines -->
+  <g opacity="0.12" stroke="#93c5fd" stroke-width="0.8">
+    <line x1="0" y1="180" x2="1200" y2="180" stroke-dasharray="3 6"/>
+    <line x1="0" y1="360" x2="1200" y2="360" stroke-dasharray="3 6"/>
+    <line x1="0" y1="540" x2="1200" y2="540" stroke-dasharray="3 6"/>
+    <line x1="0" y1="720" x2="1200" y2="720" stroke-dasharray="3 6"/>
+    <line x1="240" y1="0" x2="240" y2="900" stroke-dasharray="3 6"/>
+    <line x1="480" y1="0" x2="480" y2="900" stroke-dasharray="3 6"/>
+    <line x1="720" y1="0" x2="720" y2="900" stroke-dasharray="3 6"/>
+    <line x1="960" y1="0" x2="960" y2="900" stroke-dasharray="3 6"/>
+    <!-- Celestial Arcs -->
+    <path d="M 0 780 Q 600 620 1200 780" fill="none" stroke-dasharray="4 8"/>
+    <path d="M 0 250 Q 600 120 1200 250" fill="none" stroke-dasharray="4 8"/>
+  </g>
+
+  <!-- Ambient Starfield (Hundreds of distant stars) -->
+  <g fill="#ffffff">
+    <circle cx="45" cy="50" r="0.9" opacity="0.5"/>
+    <circle cx="120" cy="180" r="1.2" opacity="0.6"/>
+    <circle cx="210" cy="90" r="0.8" opacity="0.4"/>
+    <circle cx="310" cy="40" r="1.4" opacity="0.7"/>
+    <circle cx="390" cy="220" r="1" opacity="0.5"/>
+    <circle cx="510" cy="80" r="1.3" opacity="0.6"/>
+    <circle cx="680" cy="50" r="1" opacity="0.5"/>
+    <circle cx="820" cy="110" r="1.5" opacity="0.7"/>
+    <circle cx="990" cy="70" r="0.9" opacity="0.4"/>
+    <circle cx="1140" cy="140" r="1.4" opacity="0.8"/>
+    <circle cx="90" cy="420" r="1.1" opacity="0.6"/>
+    <circle cx="270" cy="490" r="0.8" opacity="0.4"/>
+    <circle cx="420" cy="440" r="1.3" opacity="0.5"/>
+    <circle cx="780" cy="470" r="1.2" opacity="0.6"/>
+    <circle cx="940" cy="430" r="0.9" opacity="0.4"/>
+    <circle cx="1110" cy="460" r="1.4" opacity="0.7"/>
+    <circle cx="60" cy="720" r="1" opacity="0.5"/>
+    <circle cx="220" cy="830" r="1.4" opacity="0.7"/>
+    <circle cx="380" cy="760" r="0.8" opacity="0.4"/>
+    <circle cx="560" cy="860" r="1.2" opacity="0.6"/>
+    <circle cx="740" cy="790" r="1" opacity="0.5"/>
+    <circle cx="890" cy="840" r="1.5" opacity="0.8"/>
+    <circle cx="1060" cy="750" r="1.1" opacity="0.6"/>
+    <circle cx="1160" cy="820" r="0.9" opacity="0.4"/>
+  </g>
+
+  <!-- ==================== 1. URSA MAJOR (Big Dipper) - Top Left ==================== -->
+  <g id="ursa-major" transform="translate(70, 50)">
+    <path class="constellation-line" d="M 15 110 L 55 95 L 95 85 L 140 80 L 135 135 L 205 125 L 215 70 L 140 80" />
+    <circle cx="15" cy="110" r="3.2" fill="#bae6fd" filter="url(#starGlow)"/>
+    <circle cx="55" cy="95" r="3.2" fill="#ffffff" filter="url(#starGlow)"/>
+    <circle cx="95" cy="85" r="3.8" fill="#ffffff" filter="url(#superGlow)"/>
+    <text x="85" y="75" class="star-name">Alioth</text>
+    <circle cx="140" cy="80" r="2.8" fill="#e0f2fe" filter="url(#starGlow)"/>
+    <circle cx="135" cy="135" r="3.4" fill="#e0f2fe" filter="url(#starGlow)"/>
+    <circle cx="205" cy="125" r="3.6" fill="#bae6fd" filter="url(#starGlow)"/>
+    <circle cx="215" cy="70" r="4.2" fill="#fed7aa" filter="url(#superGlow)"/>
+    <text x="222" y="68" class="star-name">Dubhe</text>
+    <text x="75" y="165" class="constellation-label">URSA MAJOR</text>
+  </g>
+
+  <!-- ==================== 2. CASSIOPEIA - Mid Left ==================== -->
+  <g id="cassiopeia" transform="translate(60, 310)">
+    <path class="constellation-line" d="M 20 65 L 65 30 L 110 55 L 155 20 L 195 40" />
+    <circle cx="20" cy="65" r="3.2" fill="#fed7aa" filter="url(#starGlow)"/>
+    <circle cx="65" cy="30" r="4.2" fill="#fdba74" filter="url(#superGlow)"/>
+    <text x="50" y="20" class="star-name">Schedar</text>
+    <circle cx="110" cy="55" r="4.5" fill="#38bdf8" filter="url(#superGlow)"/>
+    <text x="100" y="75" class="star-name">Navi</text>
+    <circle cx="155" cy="20" r="3.3" fill="#ffffff" filter="url(#starGlow)"/>
+    <circle cx="195" cy="40" r="2.9" fill="#bae6fd" filter="url(#starGlow)"/>
+    <text x="65" y="105" class="constellation-label">CASSIOPEIA</text>
+  </g>
+
+  <!-- ==================== 3. TAURUS & PLEIADES - Bottom Left ==================== -->
+  <g id="taurus" transform="translate(60, 600)">
+    <!-- Horns and Aldebaran Eye -->
+    <path class="constellation-line" d="M 30 50 L 80 85 L 140 100 L 190 60 L 140 100 L 120 150 L 70 140 L 80 85" />
+    <circle cx="140" cy="100" r="5" fill="#f97316" filter="url(#superGlow)"/>
+    <text x="148" y="98" class="star-name" fill="#f97316">Aldebaran</text>
+    <circle cx="30" cy="50" r="3.2" fill="#bae6fd" filter="url(#starGlow)"/>
+    <circle cx="190" cy="60" r="3.5" fill="#e0f2fe" filter="url(#starGlow)"/>
+    <!-- Pleiades Cluster (The Seven Sisters) -->
+    <g transform="translate(20, 110)">
+      <circle cx="5" cy="5" r="2" fill="#38bdf8" filter="url(#superGlow)"/>
+      <circle cx="12" cy="7" r="2" fill="#bae6fd" filter="url(#starGlow)"/>
+      <circle cx="8" cy="14" r="1.8" fill="#ffffff" filter="url(#starGlow)"/>
+      <circle cx="17" cy="12" r="1.8" fill="#bae6fd"/>
+      <circle cx="15" cy="19" r="1.6" fill="#38bdf8"/>
+      <circle cx="23" cy="15" r="1.8" fill="#ffffff"/>
+      <text x="32" y="16" class="star-name" fill="#38bdf8">Pleiades (M45)</text>
+    </g>
+    <text x="75" y="190" class="constellation-label">TAURUS</text>
+  </g>
+
+  <!-- ==================== 4. CYGNUS (Northern Cross) - Top Right ==================== -->
+  <g id="cygnus" transform="translate(880, 50)">
+    <path class="constellation-line" d="M 120 15 L 115 85 L 110 175" />
+    <path class="constellation-line" d="M 45 65 L 115 85 L 195 95" />
+    <circle cx="120" cy="15" r="5" fill="#ffffff" filter="url(#superGlow)"/>
+    <text x="130" y="15" class="star-name">Deneb</text>
+    <circle cx="115" cy="85" r="3.8" fill="#fed7aa" filter="url(#superGlow)"/>
+    <text x="125" y="85" class="star-name">Sadr</text>
+    <circle cx="110" cy="175" r="3.6" fill="#fde047" filter="url(#superGlow)"/>
+    <text x="65" y="190" class="star-name">Albireo</text>
+    <circle cx="45" cy="65" r="3.2" fill="#fed7aa" filter="url(#starGlow)"/>
+    <circle cx="195" cy="95" r="3.2" fill="#bae6fd" filter="url(#starGlow)"/>
+    <text x="90" y="210" class="constellation-label">CYGNUS</text>
+  </g>
+
+  <!-- ==================== 5. ORION THE HUNTER - Mid Right ==================== -->
+  <g id="orion" transform="translate(890, 310)">
+    <path class="constellation-line" d="M 35 25 L 145 15 L 120 80 L 95 85 L 70 90 L 35 25" />
+    <path class="constellation-line" d="M 70 90 L 25 150 L 95 85 L 155 140 L 120 80" />
+    <circle cx="35" cy="25" r="5.2" fill="#fb923c" filter="url(#superGlow)"/>
+    <text x="5" y="18" class="star-name">Betelgeuse</text>
+    <circle cx="145" cy="15" r="4" fill="#38bdf8" filter="url(#superGlow)"/>
+    <text x="155" y="18" class="star-name">Bellatrix</text>
+    <circle cx="70" cy="90" r="3.4" fill="#e0f2fe" filter="url(#starGlow)"/>
+    <circle cx="95" cy="85" r="3.6" fill="#ffffff" filter="url(#superGlow)"/>
+    <circle cx="120" cy="80" r="3.4" fill="#e0f2fe" filter="url(#starGlow)"/>
+    <circle cx="25" cy="150" r="3.6" fill="#93c5fd" filter="url(#starGlow)"/>
+    <text x="5" y="165" class="star-name">Saiph</text>
+    <circle cx="155" cy="140" r="5.5" fill="#e0f2fe" filter="url(#superGlow)"/>
+    <text x="165" y="145" class="star-name">Rigel</text>
+    <text x="75" y="180" class="constellation-label">ORION</text>
+  </g>
+
+  <!-- ==================== 6. PEGASUS (Great Square) - Bottom Right ==================== -->
+  <g id="pegasus" transform="translate(880, 600)">
+    <!-- Great Square of Pegasus -->
+    <path class="constellation-line" d="M 30 30 L 150 25 L 160 135 L 35 140 L 30 30" />
+    <path class="constellation-line" d="M 30 30 L 0 70" />
+    <circle cx="30" cy="30" r="3.6" fill="#bae6fd" filter="url(#starGlow)"/>
+    <text x="10" y="20" class="star-name">Scheat</text>
+    <circle cx="150" cy="25" r="4" fill="#ffffff" filter="url(#superGlow)"/>
+    <text x="155" y="20" class="star-name">Alpheratz</text>
+    <circle cx="160" cy="135" r="3.4" fill="#bae6fd" filter="url(#starGlow)"/>
+    <text x="168" y="140" class="star-name">Algenib</text>
+    <circle cx="35" cy="140" r="4.2" fill="#fed7aa" filter="url(#superGlow)"/>
+    <text x="15" y="158" class="star-name">Markab</text>
+    <text x="65" y="185" class="constellation-label">PEGASUS</text>
+  </g>
+
+  <!-- ==================== CENTER HERO CONTENT & CARDS ==================== -->
+  <!-- Center Header -->
+  <g transform="translate(600, 95)">
+    <!-- Polaris Compass Star -->
+    <path d="M 0 -45 L 5 -25 L 25 -20 L 5 -15 L 0 5 L -5 -15 L -25 -20 L -5 -25 Z" fill="#ffffff" filter="url(#superGlow)"/>
+    <circle cx="0" cy="-20" r="2.5" fill="#38bdf8"/>
+    <text x="0" y="35" text-anchor="middle" class="title-main">SWASHUA</text>
+    <text x="0" y="65" text-anchor="middle" class="title-sub">REAL CONSTELLATION PROFILE SKY</text>
+  </g>
+
+  <!-- Center Frosted Glass Info Canvas -->
+  <g transform="translate(340, 200)">
+    <rect width="520" height="640" class="card-box" />
+
+    <!-- Card 1: Observatory Mission -->
+    <g transform="translate(30, 45)">
+      <text x="0" y="0" class="card-title">✦ ASTRONOMICAL HEADQUARTERS</text>
+      <text x="0" y="28" class="card-body">Developer navigating software architecture and cosmic design.</text>
+      <text x="0" y="50" class="card-body">Orchestrating scalable systems, modern UIs, and robust code.</text>
+      <line x1="0" y1="70" x2="460" y2="70" stroke="rgba(147, 197, 253, 0.15)"/>
+    </g>
+
+    <!-- Card 2: Stellar Coordinates -->
+    <g transform="translate(30, 155)">
+      <text x="0" y="0" class="card-title">✦ ACTIVE STAR SYSTEMS</text>
+      <text x="0" y="28" class="card-body">🌌 Northern Celestial: Ursa Major (Big Dipper) &amp; Cassiopeia</text>
+      <text x="0" y="52" class="card-body">🌌 Equatorial Realm: Orion (Betelgeuse, Rigel, Belt) &amp; Taurus</text>
+      <text x="0" y="76" class="card-body">🌌 Summer Triangle / Autumn: Cygnus &amp; Pegasus Great Square</text>
+      <line x1="0" y1="96" x2="460" y2="96" stroke="rgba(147, 197, 253, 0.15)"/>
+    </g>
+
+    <!-- Card 3: Celestial Tech Stack -->
+    <g transform="translate(30, 290)">
+      <text x="0" y="0" class="card-title">✦ CORE PROPULSION &amp; TECH STACK</text>
+      <text x="0" y="30" class="card-body">⚡ Languages: TypeScript • JavaScript • Python • C# / .NET • C++</text>
+      <text x="0" y="56" class="card-body">⚡ Ecosystem: React • Next.js • Node.js • Tailwind CSS • Docker</text>
+      <text x="0" y="82" class="card-body">⚡ Mission Control: Git • Linux • Cloud Services • VS Code</text>
+      <line x1="0" y1="102" x2="460" y2="102" stroke="rgba(147, 197, 253, 0.15)"/>
+    </g>
+
+    <!-- Card 4: Stargazer Quote & Telemetry -->
+    <g transform="translate(30, 430)">
+      <text x="0" y="0" class="card-title">✦ STARGAZING PHILOSOPHY</text>
+      <text x="0" y="28" class="card-body" font-style="italic">"We are an impossibility in an impossible universe." — Ray Bradbury</text>
+      <text x="0" y="56" class="card-body">Building digital artifacts that bridge ideas across the event horizon.</text>
+    </g>
+
+    <!-- Footer inside Card -->
+    <g transform="translate(260, 595)">
+      <text x="0" y="0" text-anchor="middle" font-family="monospace" font-size="11" fill="#64748b" letter-spacing="2">
+        COSMIC SKY MAP • REAL ASTRONOMICAL POSITIONS
+      </text>
+    </g>
+  </g>
+</svg>
