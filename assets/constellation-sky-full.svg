@@ -1,26 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" width="100%" height="650">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="800">
   <defs>
-    <!-- Deep Space Sky Gradient -->
-    <linearGradient id="deepSpace" x1="0%" y1="0%" x2="100%" y2="100%">
+    <!-- Deep Cosmos Space Gradient -->
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#02040a"/>
-      <stop offset="50%" stop-color="#050b1a"/>
-      <stop offset="100%" stop-color="#02050e"/>
+      <stop offset="35%" stop-color="#070c20"/>
+      <stop offset="70%" stop-color="#0b1536"/>
+      <stop offset="100%" stop-color="#020617"/>
     </linearGradient>
 
-    <!-- Star Glow Filters -->
+    <!-- Nebulae Radial Gradients -->
+    <radialGradient id="nebula1" cx="20%" cy="25%" r="60%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.32"/>
+      <stop offset="40%" stop-color="#8b5cf6" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#02040a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="nebula2" cx="80%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.28"/>
+      <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#02040a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="nebula3" cx="50%" cy="80%" r="50%">
+      <stop offset="0%" stop-color="#ec4899" stop-opacity="0.2"/>
+      <stop offset="45%" stop-color="#3b82f6" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#02040a" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Glowing Filters -->
     <filter id="starGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
     <filter id="superGlow" x="-60%" y="-60%" width="220%" height="220%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="4.5" result="blur1"/>
-      <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur2"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="b1"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="b2"/>
       <feMerge>
-        <feMergeNode in="blur1"/>
-        <feMergeNode in="blur2"/>
+        <feMergeNode in="b1"/>
+        <feMergeNode in="b2"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
@@ -28,123 +46,172 @@
 
   <style>
     .constellation-line {
-      stroke: rgba(147, 197, 253, 0.45);
-      stroke-width: 1.4;
+      stroke: rgba(147, 197, 253, 0.65);
+      stroke-width: 1.8;
       stroke-linecap: round;
+      stroke-linejoin: round;
       fill: none;
     }
-    .inter-constellation-link {
-      stroke: rgba(125, 211, 252, 0.22);
-      stroke-width: 1.1;
+    .inter-link {
+      stroke: rgba(147, 197, 253, 0.2);
+      stroke-width: 1.2;
       stroke-dasharray: 4 5;
       fill: none;
     }
-    .title-text {
+    .title-main {
       font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 38px;
-      font-weight: 700;
+      font-size: 50px;
+      font-weight: 800;
       fill: #ffffff;
-      letter-spacing: 3px;
+      letter-spacing: 12px;
     }
   </style>
 
-  <!-- Clean Deep Space Background -->
-  <rect width="100%" height="100%" fill="url(#deepSpace)" rx="16"/>
+  <!-- Deep Space Canvas Base -->
+  <rect width="100%" height="100%" fill="url(#skyGrad)" rx="20"/>
+  <rect width="100%" height="100%" fill="url(#nebula1)" rx="20"/>
+  <rect width="100%" height="100%" fill="url(#nebula2)" rx="20"/>
+  <rect width="100%" height="100%" fill="url(#nebula3)" rx="20"/>
 
-  <!-- ==================== CONNECTING INTER-CONSTELLATION NETWORK LINES ==================== -->
-  <!-- Ursa Major (Dubhe) -> Cassiopeia (Schedar) -->
-  <line x1="285" y1="110" x2="155" y2="350" class="inter-constellation-link"/>
-  <!-- Cassiopeia (Segin) -> Taurus (Aldebaran) -->
-  <line x1="285" y1="360" x2="230" y2="520" class="inter-constellation-link"/>
-  <!-- Ursa Major (Alkaid) -> Cygnus (Deneb) -->
-  <line x1="75" y1="170" x2="1000" y2="65" class="inter-constellation-link"/>
-  <!-- Cygnus (Albireo) -> Orion (Betelgeuse) -->
-  <line x1="990" y1="225" x2="935" y2="345" class="inter-constellation-link"/>
-  <!-- Orion (Rigel) -> Pegasus (Scheat) -->
-  <line x1="1055" y1="460" x2="920" y2="530" class="inter-constellation-link"/>
-  <!-- Taurus (Aldebaran) -> Orion (Saiph) -->
-  <line x1="230" y1="520" x2="925" y2="470" class="inter-constellation-link"/>
+  <!-- Celestial Grid Coordinates -->
+  <g opacity="0.12" stroke="#93c5fd" stroke-width="0.8">
+    <line x1="0" y1="160" x2="1200" y2="160" stroke-dasharray="3 6"/>
+    <line x1="0" y1="320" x2="1200" y2="320" stroke-dasharray="3 6"/>
+    <line x1="0" y1="480" x2="1200" y2="480" stroke-dasharray="3 6"/>
+    <line x1="0" y1="640" x2="1200" y2="640" stroke-dasharray="3 6"/>
+    <line x1="240" y1="0" x2="240" y2="800" stroke-dasharray="3 6"/>
+    <line x1="480" y1="0" x2="480" y2="800" stroke-dasharray="3 6"/>
+    <line x1="720" y1="0" x2="720" y2="800" stroke-dasharray="3 6"/>
+    <line x1="960" y1="0" x2="960" y2="800" stroke-dasharray="3 6"/>
+    <path d="M 0 700 Q 600 550 1200 700" fill="none" stroke-dasharray="4 8"/>
+    <path d="M 0 220 Q 600 100 1200 220" fill="none" stroke-dasharray="4 8"/>
+  </g>
 
-  <!-- ==================== CONSTELLATION 1: URSA MAJOR (Big Dipper) ==================== -->
+  <!-- Ambient Stars -->
+  <g fill="#ffffff">
+    <circle cx="45" cy="50" r="0.9" opacity="0.5"/>
+    <circle cx="120" cy="180" r="1.2" opacity="0.6"/>
+    <circle cx="310" cy="40" r="1.4" opacity="0.7"/>
+    <circle cx="390" cy="220" r="1" opacity="0.5"/>
+    <circle cx="510" cy="80" r="1.3" opacity="0.6"/>
+    <circle cx="680" cy="50" r="1" opacity="0.5"/>
+    <circle cx="820" cy="110" r="1.5" opacity="0.7"/>
+    <circle cx="990" cy="70" r="0.9" opacity="0.4"/>
+    <circle cx="1140" cy="140" r="1.4" opacity="0.8"/>
+    <circle cx="420" cy="440" r="1.3" opacity="0.5"/>
+    <circle cx="780" cy="470" r="1.2" opacity="0.6"/>
+    <circle cx="940" cy="430" r="0.9" opacity="0.4"/>
+    <circle cx="1110" cy="460" r="1.4" opacity="0.7"/>
+    <circle cx="60" cy="720" r="1" opacity="0.5"/>
+    <circle cx="380" cy="740" r="0.8" opacity="0.4"/>
+    <circle cx="560" cy="760" r="1.2" opacity="0.6"/>
+    <circle cx="800" cy="730" r="1" opacity="0.5"/>
+  </g>
+
+  <!-- ==================== CONNECTING CONSTELLATION MESH LINES ==================== -->
+  <!-- Ursa Major to Cassiopeia -->
+  <line x1="285" y1="130" x2="155" y2="350" class="inter-link"/>
+  <!-- Cassiopeia to Taurus -->
+  <line x1="285" y1="360" x2="230" y2="580" class="inter-link"/>
+  <!-- Cygnus to Orion -->
+  <line x1="990" y1="235" x2="935" y2="385" class="inter-link"/>
+  <!-- Orion to Pegasus -->
+  <line x1="1055" y1="500" x2="920" y2="590" class="inter-link"/>
+
+  <!-- ==================== CONSTELLATION 1: URSA MAJOR ==================== -->
   <g id="ursa-major">
-    <path class="constellation-line" d="M 75 170 L 115 155 L 155 145 L 205 140 L 195 200 L 275 185 L 285 110 L 205 140" />
-    <circle cx="75" cy="170" r="3" fill="#bae6fd" filter="url(#starGlow)"/>
-    <circle cx="115" cy="155" r="3" fill="#ffffff" filter="url(#starGlow)"/>
-    <circle cx="155" cy="145" r="3.5" fill="#ffffff" filter="url(#superGlow)"/>
-    <circle cx="205" cy="140" r="2.8" fill="#e0f2fe" filter="url(#starGlow)"/>
-    <circle cx="195" cy="200" r="3.2" fill="#e0f2fe" filter="url(#starGlow)"/>
-    <circle cx="275" cy="185" r="3.5" fill="#bae6fd" filter="url(#starGlow)"/>
-    <circle cx="285" cy="110" r="4.2" fill="#fed7aa" filter="url(#superGlow)"/>
+    <polygon points="210,140 205,195 275,185 285,130" class="constellation-line"/>
+    <polyline points="75,170 115,155 155,145 210,140" class="constellation-line"/>
+    
+    <circle cx="75" cy="170" r="3.2" fill="#bae6fd" filter="url(#starGlow)"/>
+    <circle cx="115" cy="155" r="3.2" fill="#ffffff" filter="url(#starGlow)"/>
+    <circle cx="155" cy="145" r="3.8" fill="#ffffff" filter="url(#superGlow)"/>
+    <circle cx="210" cy="140" r="2.8" fill="#e0f2fe" filter="url(#starGlow)"/>
+    <circle cx="205" cy="195" r="3.4" fill="#e0f2fe" filter="url(#starGlow)"/>
+    <circle cx="275" cy="185" r="3.6" fill="#bae6fd" filter="url(#starGlow)"/>
+    <circle cx="285" cy="130" r="4.2" fill="#fed7aa" filter="url(#superGlow)"/>
   </g>
 
   <!-- ==================== CONSTELLATION 2: CASSIOPEIA ==================== -->
   <g id="cassiopeia">
-    <path class="constellation-line" d="M 110 385 L 155 350 L 200 375 L 245 340 L 285 360" />
-    <circle cx="110" cy="385" r="3" fill="#fed7aa" filter="url(#starGlow)"/>
-    <circle cx="155" cy="350" r="4" fill="#fdba74" filter="url(#superGlow)"/>
-    <circle cx="200" cy="375" r="4.2" fill="#38bdf8" filter="url(#superGlow)"/>
-    <circle cx="245" cy="340" r="3.2" fill="#ffffff" filter="url(#starGlow)"/>
-    <circle cx="285" cy="360" r="2.8" fill="#bae6fd" filter="url(#starGlow)"/>
+    <polyline points="110,385 155,350 200,375 245,340 285,360" class="constellation-line"/>
+    
+    <circle cx="110" cy="385" r="3.2" fill="#fed7aa" filter="url(#starGlow)"/>
+    <circle cx="155" cy="350" r="4.2" fill="#fdba74" filter="url(#superGlow)"/>
+    <circle cx="200" cy="375" r="4.5" fill="#38bdf8" filter="url(#superGlow)"/>
+    <circle cx="245" cy="340" r="3.3" fill="#ffffff" filter="url(#starGlow)"/>
+    <circle cx="285" cy="360" r="2.9" fill="#bae6fd" filter="url(#starGlow)"/>
   </g>
 
   <!-- ==================== CONSTELLATION 3: TAURUS & PLEIADES ==================== -->
   <g id="taurus">
-    <path class="constellation-line" d="M 120 470 L 170 505 L 230 520 L 280 480 L 230 520 L 210 570 L 160 560 L 170 505" />
-    <circle cx="230" cy="520" r="5" fill="#f97316" filter="url(#superGlow)"/>
-    <circle cx="120" cy="470" r="3" fill="#bae6fd" filter="url(#starGlow)"/>
-    <circle cx="280" cy="480" r="3.3" fill="#e0f2fe" filter="url(#starGlow)"/>
-    <circle cx="210" cy="570" r="3" fill="#ffffff" filter="url(#starGlow)"/>
-    <circle cx="160" cy="560" r="2.8" fill="#bae6fd" filter="url(#starGlow)"/>
-    <!-- Pleiades Cluster -->
-    <circle cx="90" cy="520" r="2" fill="#38bdf8" filter="url(#superGlow)"/>
-    <circle cx="97" cy="522" r="1.8" fill="#bae6fd"/>
-    <circle cx="93" cy="529" r="1.6" fill="#ffffff"/>
-    <circle cx="102" cy="527" r="1.6" fill="#bae6fd"/>
-    <circle cx="100" cy="534" r="1.4" fill="#38bdf8"/>
-    <circle cx="108" cy="530" r="1.6" fill="#ffffff"/>
+    <!-- Horns and Head (V-shape Hyades) -->
+    <polyline points="120,530 170,565 230,580 280,540" class="constellation-line"/>
+    <polygon points="230,580 210,630 160,620 170,565" class="constellation-line"/>
+    
+    <circle cx="230" cy="580" r="5.2" fill="#f97316" filter="url(#superGlow)"/>
+    <circle cx="120" cy="530" r="3.2" fill="#bae6fd" filter="url(#starGlow)"/>
+    <circle cx="280" cy="540" r="3.5" fill="#e0f2fe" filter="url(#starGlow)"/>
+    <circle cx="210" cy="630" r="3.2" fill="#ffffff" filter="url(#starGlow)"/>
+    <circle cx="160" cy="620" r="2.8" fill="#bae6fd" filter="url(#starGlow)"/>
+    <!-- Pleiades -->
+    <circle cx="100" cy="580" r="2" fill="#38bdf8" filter="url(#superGlow)"/>
+    <circle cx="107" cy="582" r="1.8" fill="#bae6fd"/>
+    <circle cx="103" cy="589" r="1.6" fill="#ffffff"/>
+    <circle cx="112" cy="587" r="1.6" fill="#bae6fd"/>
+    <circle cx="110" cy="594" r="1.4" fill="#38bdf8"/>
+    <circle cx="118" cy="590" r="1.6" fill="#ffffff"/>
   </g>
 
   <!-- ==================== CONSTELLATION 4: CYGNUS ==================== -->
   <g id="cygnus">
-    <path class="constellation-line" d="M 1000 65 L 995 135 L 990 225" />
-    <path class="constellation-line" d="M 925 115 L 995 135 L 1075 145" />
-    <circle cx="1000" cy="65" r="4.8" fill="#ffffff" filter="url(#superGlow)"/>
-    <circle cx="995" cy="135" r="3.6" fill="#fed7aa" filter="url(#superGlow)"/>
-    <circle cx="990" cy="225" r="3.4" fill="#fde047" filter="url(#superGlow)"/>
-    <circle cx="925" cy="115" r="3" fill="#fed7aa" filter="url(#starGlow)"/>
-    <circle cx="1075" cy="145" r="3" fill="#bae6fd" filter="url(#starGlow)"/>
+    <polyline points="1000,75 995,145 990,235" class="constellation-line"/>
+    <polyline points="925,125 995,145 1075,155" class="constellation-line"/>
+    
+    <circle cx="1000" cy="75" r="5" fill="#ffffff" filter="url(#superGlow)"/>
+    <circle cx="995" cy="145" r="3.8" fill="#fed7aa" filter="url(#superGlow)"/>
+    <circle cx="990" cy="235" r="3.6" fill="#fde047" filter="url(#superGlow)"/>
+    <circle cx="925" cy="125" r="3.2" fill="#fed7aa" filter="url(#starGlow)"/>
+    <circle cx="1075" cy="155" r="3.2" fill="#bae6fd" filter="url(#starGlow)"/>
   </g>
 
   <!-- ==================== CONSTELLATION 5: ORION ==================== -->
   <g id="orion">
-    <path class="constellation-line" d="M 935 345 L 1045 335 L 1020 400 L 995 405 L 970 410 L 935 345" />
-    <path class="constellation-line" d="M 970 410 L 925 470 L 995 405 L 1055 460 L 1020 400" />
-    <circle cx="935" cy="345" r="5" fill="#fb923c" filter="url(#superGlow)"/>
-    <circle cx="1045" cy="335" r="3.8" fill="#38bdf8" filter="url(#superGlow)"/>
-    <circle cx="970" cy="410" r="3.2" fill="#e0f2fe" filter="url(#starGlow)"/>
-    <circle cx="995" cy="405" r="3.4" fill="#ffffff" filter="url(#superGlow)"/>
-    <circle cx="1020" cy="400" r="3.2" fill="#e0f2fe" filter="url(#starGlow)"/>
-    <circle cx="925" cy="470" r="3.4" fill="#93c5fd" filter="url(#starGlow)"/>
-    <circle cx="1055" cy="460" r="5.2" fill="#e0f2fe" filter="url(#superGlow)"/>
+    <!-- Upper Body & Belt -->
+    <polyline points="935,385 1045,375 1020,440 995,445 970,450 935,385" class="constellation-line"/>
+    <!-- Lower Body & Belt to Feet -->
+    <polyline points="970,450 925,510" class="constellation-line"/>
+    <polyline points="1020,440 1055,500" class="constellation-line"/>
+    <polyline points="995,445 925,510" class="constellation-line"/>
+    <polyline points="995,445 1055,500" class="constellation-line"/>
+
+    <circle cx="935" cy="385" r="5.2" fill="#fb923c" filter="url(#superGlow)"/>
+    <circle cx="1045" cy="375" r="4" fill="#38bdf8" filter="url(#superGlow)"/>
+    <circle cx="970" cy="450" r="3.4" fill="#e0f2fe" filter="url(#starGlow)"/>
+    <circle cx="995" cy="445" r="3.6" fill="#ffffff" filter="url(#superGlow)"/>
+    <circle cx="1020" cy="440" r="3.4" fill="#e0f2fe" filter="url(#starGlow)"/>
+    <circle cx="925" cy="510" r="3.6" fill="#93c5fd" filter="url(#starGlow)"/>
+    <circle cx="1055" cy="500" r="5.5" fill="#e0f2fe" filter="url(#superGlow)"/>
   </g>
 
   <!-- ==================== CONSTELLATION 6: PEGASUS ==================== -->
   <g id="pegasus">
-    <path class="constellation-line" d="M 920 530 L 1040 525 L 1050 615 L 925 620 L 920 530" />
-    <circle cx="920" cy="530" r="3.4" fill="#bae6fd" filter="url(#starGlow)"/>
-    <circle cx="1040" cy="525" r="3.8" fill="#ffffff" filter="url(#superGlow)"/>
-    <circle cx="1050" cy="615" r="3.2" fill="#bae6fd" filter="url(#starGlow)"/>
-    <circle cx="925" cy="620" r="3.8" fill="#fed7aa" filter="url(#superGlow)"/>
+    <polygon points="920,590 1040,585 1050,675 925,680" class="constellation-line"/>
+    
+    <circle cx="920" cy="590" r="3.6" fill="#bae6fd" filter="url(#starGlow)"/>
+    <circle cx="1040" cy="585" r="4" fill="#ffffff" filter="url(#superGlow)"/>
+    <circle cx="1050" cy="675" r="3.4" fill="#bae6fd" filter="url(#starGlow)"/>
+    <circle cx="925" cy="680" r="4.2" fill="#fed7aa" filter="url(#superGlow)"/>
   </g>
 
-  <!-- ==================== ONLY THE SENTENCE ==================== -->
-  <g transform="translate(600, 325)">
-    <!-- Polaris Compass Star Indicator -->
-    <path d="M 0 -45 L 4 -27 L 22 -23 L 4 -19 L 0 -1 L -4 -19 L -22 -23 L -4 -27 Z" fill="#ffffff" filter="url(#superGlow)"/>
-    <circle cx="0" cy="-23" r="2" fill="#38bdf8"/>
+  <!-- ==================== ONLY SWASHUA & POLARIS COMPASS ==================== -->
+  <g transform="translate(600, 390)">
+    <!-- Polaris Compass Star -->
+    <path d="M 0 -85 L 6 -52 L 32 -45 L 6 -38 L 0 -5 L -6 -38 L -32 -45 L -6 -52 Z" fill="#ffffff" filter="url(#superGlow)"/>
+    <circle cx="0" cy="-45" r="3" fill="#38bdf8"/>
 
-    <text x="0" y="30" text-anchor="middle" class="title-text" filter="url(#starGlow)">
-      Hello World! I'm Swashua!
+    <text x="0" y="25" text-anchor="middle" class="title-main" filter="url(#starGlow)">
+      SWASHUA
     </text>
   </g>
 </svg>
